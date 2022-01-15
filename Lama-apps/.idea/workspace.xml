@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9db764c5-8c16-472b-868b-44dc87b6bf70" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_30" />
+  <component name="ProjectId" id="20KhA7p6zBVvt8XDFL6d2BlR93e" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9db764c5-8c16-472b-868b-44dc87b6bf70" name="Default Changelist" comment="" />
+      <created>1635799039065</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635799039065</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="197" key="#Notifications" timestamp="1638789558756">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="552" y="197" key="#Notifications/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1638789558756" />
+    <state x="414" y="196" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1636401042272">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="414" y="196" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1636401042272" />
+    <state x="808" y="428" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1636290020138">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="808" y="428" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1636290020138" />
+    <state width="1860" height="291" key="GridCell.Tab.0.bottom" timestamp="1636314546996">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1860" height="291" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1636314546996" />
+    <state width="1860" height="291" key="GridCell.Tab.0.center" timestamp="1636314546995">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1860" height="291" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1636314546995" />
+    <state width="1860" height="291" key="GridCell.Tab.0.left" timestamp="1636314546995">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1860" height="291" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1636314546995" />
+    <state width="1860" height="291" key="GridCell.Tab.0.right" timestamp="1636314546995">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1860" height="291" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1636314546995" />
+    <state x="2363" y="182" key="SettingsEditor" timestamp="1638451272071">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="443" y="182" key="SettingsEditor/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1637516252790" />
+    <state x="2363" y="182" key="SettingsEditor/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1638451272071" />
+    <state x="443" y="182" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1636401148153" />
+    <state x="54" y="95" width="1720" height="877" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1639385101967">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="54" y="95" width="1720" height="877" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1639385101967" />
+    <state x="1974" y="95" width="1720" height="877" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1638789428969" />
+    <state x="100" y="103" width="1720" height="877" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1636365342603" />
+    <state x="656" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1639487412101">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="656" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1639487412101" />
+    <state x="2576" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1638789375180" />
+    <state x="656" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1636400092487" />
+    <state x="616" y="252" key="run.anything.popup" timestamp="1638789889175">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="252" key="run.anything.popup/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1638789889175" />
+  </component>
+</project>
