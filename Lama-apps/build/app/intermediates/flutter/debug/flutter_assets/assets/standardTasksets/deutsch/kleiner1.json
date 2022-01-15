@@ -1,0 +1,28 @@
+{
+    "taskset_name": "Standardaufgaben Klasse 1",
+    "taskset_subject": "Kleiner",
+    "taskset_grade": 1,
+    "tasks": [
+        {
+            "task_type": "Equation",
+            "task_reward": 2,
+            "lama_text": "Löse die Gleichung!",
+            "left_to_solve": 4,
+            "equation": [
+                "?",
+                "+",
+                "1",
+                "=",
+                "2"
+            ],
+            "options": [
+                "3",
+                "4",
+                "0",
+                "2",
+                "5",
+                "1"
+            ]
+        } 
+    ]
+}
