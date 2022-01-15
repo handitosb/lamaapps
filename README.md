@@ -1,2 +1,2 @@
 # LAMA
-Lama ist eine interaktive Lernapp, welche im Rahmen des Softwaretechnik-Projekts 2021 an der THM Gießen entwickelt wurde.
+Dieses Code ist die Erweiterung von dem alten LAMA-Apps für Modul Wirtschaftsinformatik-Projekt 2 an der THM.
