@@ -46,7 +46,7 @@ class ClockTaskState extends State<ClockTaskScreen> {
 
   String setImage() {
     if (this.randStunde < 5|| this.randStunde > 17) {
-      if (this.randStunde == 18 || this.randStunde == 19){
+      if (this.randStunde == 18){
       return  sonneMond = "assets/images/png/sunset.png";
       }else {
       return sonneMond = "assets/images/png/moon.png";
