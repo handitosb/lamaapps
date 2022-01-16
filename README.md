@@ -1,2 +1,2 @@
 # LAMA
-Dieses Code ist die Erweiterung von dem alten LAMA-Apps für Modul Wirtschaftsinformatik-Projekt 2 an der THM.
+Dies Code ist die Erweiterung von dem alten LAMA-Apps für Modul Wirtschaftsinformatik-Projekt 2 an der THM.
