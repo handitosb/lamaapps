@@ -21,7 +21,7 @@
             "task_reward": 2,
             "lama_text": "Wie viel Uhr ist es?",
             "left_to_solve": 3,
-            "uhr": "viertelStunde",
+            "uhr": "vollStunde",
             "timer": false
         },
         {
