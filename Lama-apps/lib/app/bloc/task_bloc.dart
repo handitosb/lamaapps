@@ -138,7 +138,17 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
         }
-      } else if (t is TaskMoney) {
+      } 
+       if (t is TaskBuchstabieren) {
+        if (event.providedAnswerBool == true) {
+          rightAnswerCallback(t);
+          yield TaskAnswerResultState(true);
+        } else {
+          wrongAnswerCallback(t);
+          yield TaskAnswerResultState(false);
+        }
+      }
+      else if (t is TaskMoney) {
         if (event.providedAnswerDouble.toStringAsFixed(2) ==
             t.moneyAmount.toStringAsFixed(2)) {
           rightAnswerCallback(t);

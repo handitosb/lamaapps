@@ -5,7 +5,7 @@
     "tasks": [
         
         {
-            "task_type": "Bild2Cards",
+            "task_type": "2Cards",
             "task_reward": 2,
             "question": "Welches Zeichen steht für die Addition ?",
             "lama_text": "Tippe die richtige Antwort an!",
@@ -21,7 +21,7 @@
             "task_reward": 2,
             "lama_text": "Wie viel Uhr ist es?",
             "left_to_solve": 3,
-            "uhr": "viertelStunde",
+            "uhr": "vollStunde",
             "timer": false
         },
         {

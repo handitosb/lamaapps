@@ -17,6 +17,15 @@
             ]
         },
         {
+            "task_type": "Zerlegung",
+            "task_reward": 2,
+            "lama_text": " zerlegt die Zahlen!",
+            "left_to_solve": 3,
+            "reverse": false,
+            "right_answer": 854,
+            "answer_parts": [800 ,50 ,4] 
+        },
+        {
             "task_type": "4Cards",
             "task_reward": 2,
             "question": "Was ist das Ergebnis der Division?",

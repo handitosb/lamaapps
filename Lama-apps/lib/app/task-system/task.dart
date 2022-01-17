@@ -35,6 +35,17 @@ class Task {
             List<int>.from(json['answer_parts']),
             json['right_answer'],
         );
+
+        case "Buchstabieren": 
+        print("Buchstabieren Words : ${json['words']}");
+        return TaskBuchstabieren(
+            taskType,
+            json['task_reward'],
+            json['lama_text'],
+            json['left_to_solve'],
+           
+           ((json['words']) as List).map((e) =>  TaskBuchstabierenWord(e['image'], e['word'], List<String>.from(e['wrong_words']) )).toList()
+        );
       case "ClozeTest":
         return TaskClozeTest(
             taskType,
@@ -521,6 +532,19 @@ class TaskConnect extends Task {
   }
 }
 
+class TaskBuchstabieren extends Task{
+  List<TaskBuchstabierenWord> words; 
+  TaskBuchstabieren(String taskType, int reward, String lamaText, int leftToSolve, this.words) : super(taskType, reward, lamaText,leftToSolve);
+
+
+}
+class TaskBuchstabierenWord{
+  String image;
+  String word;
+  List<String> wrongWords;
+  TaskBuchstabierenWord(this.image, this.word, this.wrongWords);  
+
+}
 ///Subclass of [Task] for the Tasktype "Equation"
 ///
 ///Author: F.Leonhardt
@@ -591,4 +615,5 @@ class TaskZerlegung extends Task {
 
   // do toString Method
  
+
 }

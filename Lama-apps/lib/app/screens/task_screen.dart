@@ -7,6 +7,7 @@ import 'package:lama_app/app/bloc/task_bloc.dart';
 import 'package:lama_app/app/event/task_events.dart';
 import 'package:lama_app/app/screens/task_type_screens/bild_card_task_screen.dart';
 import 'package:lama_app/app/screens/task_type_screens/bild_four_card_task_screen.dart';
+import 'package:lama_app/app/screens/task_type_screens/buchstabieren_task_screen.dart';
 import 'package:lama_app/app/screens/task_type_screens/clock_task_screen.dart';
 import 'package:lama_app/app/screens/task_type_screens/cloze_test_task_screen.dart';
 import 'package:lama_app/app/screens/task_type_screens/connect_task_screen.dart';
@@ -321,6 +322,8 @@ class TaskScreenState extends State<TaskScreen> {
         return MoneyTaskScreen(task, constraints);
       case "VocableTest":
         return VocableTestTaskScreen(task, constraints);
+        case "Buchstabieren":
+        return BuchstabierenTaskScreen(task: task, constraints:constraints);
       case "Connect":
         return ConnectTaskScreen(task, constraints);
       case "Equation":

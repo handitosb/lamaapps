@@ -103,6 +103,12 @@ class TasksetValidator {
                 json["wrong_answers"] is List &&
                 _checkListType<String>(json["wrong_answers"])) return null;
             return "Aufgabentyp: Bild4Cards";
+          case "Buchstabieren":
+            if (json.containsKey("words") &&
+                json["words"] is List 
+               ) return null;
+            return "Aufgabentyp: Buchstabieren";
+
           case "2Cards":
             if (json.containsKey("question") &&
                 json["question"] is String &&
