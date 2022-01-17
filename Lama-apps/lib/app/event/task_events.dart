@@ -28,7 +28,7 @@ class AnswerTaskEvent extends TaskEvent {
   bool providedAnswerBool;
   List<String> providedanswerWords;
   List<bool> providedanswerStates;
-
+  List<int> answerParts;
   List<Pair> rightPositions;
   List<Pair> markedPositions;
 
