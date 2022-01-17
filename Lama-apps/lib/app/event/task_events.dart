@@ -63,4 +63,7 @@ class AnswerTaskEvent extends TaskEvent {
   AnswerTaskEvent.initEquationNew(List<String> fullAnswer) {
     this.fullAnswer = fullAnswer;
   }
+  AnswerTaskEvent.initZerlegung(List<int> answerParts){
+     this.answerParts = answerParts;
+  }
 }
