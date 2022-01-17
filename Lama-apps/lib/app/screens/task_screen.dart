@@ -296,6 +296,8 @@ class TaskScreenState extends State<TaskScreen> {
     switch (task.type) {
       case "4Cards":
         return FourCardTaskScreen(task, constraints);
+         case "Zerlegung":
+        return ZerlegungTaskScreen(task: task, constraints: constraints);
       case "ClozeTest":
         return ClozeTestTaskScreen(task, constraints);
       case "2Cards":

@@ -73,7 +73,15 @@ class TasksetValidator {
                 json["wrong_answers"] is List &&
                 _checkListType<String>(json["wrong_answers"])) return null;
             return "Aufgabentyp: 4Cards";
-
+            
+           case "Zerlegung":
+            if (
+                json.containsKey("right_answer") &&
+                json["right_answer"] is int && 
+                json.containsKey("reverse") &&
+                json["reverse"] is bool 
+                ) return null;
+            return "Aufgabentyp: Zerlegung";
           ///ClozeTest
           case "ClozeTest":
             if (json.containsKey("question") &&

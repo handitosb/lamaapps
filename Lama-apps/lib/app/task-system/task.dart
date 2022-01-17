@@ -25,6 +25,16 @@ class Task {
             json['question'],
             json['right_answer'],
             List<String>.from(json['wrong_answers']));
+            case "Zerlegung":
+        return TaskZerlegung(
+            taskType,
+            json['task_reward'],
+            json['lama_text'],
+            json['left_to_solve'],
+            json['reverse'],
+            List<int>.from(json['answer_parts']),
+            json['right_answer'],
+        );
       case "ClozeTest":
         return TaskClozeTest(
             taskType,
@@ -562,4 +572,23 @@ class TaskEquation extends Task {
         s += operandRange[i].toString();
     return s;
   }
+}
+class TaskZerlegung extends Task { 
+  List<int> answerParts;
+  int rightAnswer;
+  bool reverse;
+  
+
+  TaskZerlegung(String taskType, 
+                int reward,
+               String lamaText, 
+               int leftToSolve, 
+               this.reverse,
+               this.answerParts,
+               this.rightAnswer) 
+                 
+                 : super(taskType, reward, lamaText, leftToSolve);
+
+  // do toString Method
+ 
 }

@@ -45,7 +45,18 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
           wrongAnswerCallback(t);
           yield TaskAnswerResultState(false);
         }
-      } else if (t is TaskMarkWords) {
+      } 
+      else if (t is TaskZerlegung) {
+          //print("Zelegung validation"); // To remove after
+        if (DeepCollectionEquality().equals(event.answerParts, t.answerParts) || DeepCollectionEquality().equals([...event.answerParts].reversed, t.answerParts)) {
+          rightAnswerCallback(t);
+          yield TaskAnswerResultState(true);
+        } else {
+          wrongAnswerCallback(t);
+          yield TaskAnswerResultState(false);
+        }
+       }
+      else if (t is TaskMarkWords) {
         if (equals(t.rightWords, event.providedanswerWords)) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
