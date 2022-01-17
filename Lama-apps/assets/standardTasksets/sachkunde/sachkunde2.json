@@ -38,6 +38,15 @@
            "wordsToFind":["Karotte", "Sellerie", "Zwiebel", "Spargel"]
          },
          {
+          "task_type":"4Cards",
+          "task_reward":2,
+          "question":"Was ist die Hauptstadt von Frankreich?",
+          "lama_text":"Tippe die richtige Antwort an!",
+          "left_to_solve": 4,
+          "right_answer":"Paris",
+          "wrong_answers":["Düsseldorf", "Straßburg", "Toulouse"]
+        },
+         {
            "task_type": "MatchCategory",
            "task_reward":2,
            "lama_text": "Schiebe jedes Wort in die Richtige Kategorie",
