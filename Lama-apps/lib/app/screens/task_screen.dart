@@ -18,6 +18,7 @@ import 'package:lama_app/app/screens/task_type_screens/mark_words_task_screen.da
 import 'package:lama_app/app/screens/task_type_screens/match_Category_task_screen.dart';
 import 'package:lama_app/app/screens/task_type_screens/match_random_task_screen.dart';
 import 'package:lama_app/app/screens/task_type_screens/money_task_screen.dart';
+import 'package:lama_app/app/screens/task_type_screens/number_line_task_screen.dart';
 import 'package:lama_app/app/screens/task_type_screens/two_card_task_screen.dart';
 import 'package:lama_app/app/screens/task_type_screens/vocable_test_task_screen.dart';
 import 'package:lama_app/app/screens/task_type_screens/zerlegung_task_screen.dart';
@@ -77,7 +78,7 @@ class TaskScreenState extends State<TaskScreen> {
               break;
             case "Kleiner":
               lg = LinearGradient(
-                colors: [LamaColors.mainPink, LamaColors.white]);
+                  colors: [LamaColors.mainPink, LamaColors.white]);
           }
           return Scaffold(
             resizeToAvoidBottomInset: false,
@@ -299,11 +300,11 @@ class TaskScreenState extends State<TaskScreen> {
       case "4Cards":
         return FourCardTaskScreen(task, constraints);
       case "Zerlegung":
-      return ZerlegungTaskScreen(task: task, constraints: constraints);
+        return ZerlegungTaskScreen(task: task, constraints: constraints);
       case "ClozeTest":
         return ClozeTestTaskScreen(task, constraints);
       case "2Cards":
-      return TwoCardTaskScreen(task, constraints);
+        return TwoCardTaskScreen(task, constraints);
       case "Bild4Cards":
         return BildFourCardTaskScreen(task, constraints);
       case "Clock":
@@ -315,15 +316,17 @@ class TaskScreenState extends State<TaskScreen> {
       case "MatchCategory":
         return MatchCategoryTaskScreen(task, constraints);
       case "MatchRandom":
-        return MatchRandomTaskScreen(task, constraints);  
+        return MatchRandomTaskScreen(task, constraints);
       case "GridSelect":
         return GridSelectTaskScreen(task, constraints, GridSelectTaskBloc());
       case "MoneyTask":
         return MoneyTaskScreen(task, constraints);
+      case "NumberLine":
+        return NumberLineTaskScreen(task, constraints);
       case "VocableTest":
         return VocableTestTaskScreen(task, constraints);
-        case "Buchstabieren":
-        return BuchstabierenTaskScreen(task: task, constraints:constraints);
+      case "Buchstabieren":
+        return BuchstabierenTaskScreen(task: task, constraints: constraints);
       case "Connect":
         return ConnectTaskScreen(task, constraints);
       case "Equation":

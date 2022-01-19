@@ -25,27 +25,28 @@ class Task {
             json['question'],
             json['right_answer'],
             List<String>.from(json['wrong_answers']));
-            case "Zerlegung":
+      case "Zerlegung":
         return TaskZerlegung(
-            taskType,
-            json['task_reward'],
-            json['lama_text'],
-            json['left_to_solve'],
-            json['reverse'],
-            List<int>.from(json['answer_parts']),
-            json['right_answer'],
+          taskType,
+          json['task_reward'],
+          json['lama_text'],
+          json['left_to_solve'],
+          json['reverse'],
+          List<int>.from(json['answer_parts']),
+          json['right_answer'],
         );
 
-        case "Buchstabieren": 
+      case "Buchstabieren":
         print("Buchstabieren Words : ${json['words']}");
         return TaskBuchstabieren(
             taskType,
             json['task_reward'],
             json['lama_text'],
             json['left_to_solve'],
-           
-           ((json['words']) as List).map((e) =>  TaskBuchstabierenWord(e['image'], e['word'], List<String>.from(e['wrong_words']) )).toList()
-        );
+            ((json['words']) as List)
+                .map((e) => TaskBuchstabierenWord(
+                    e['image'], e['word'], List<String>.from(e['wrong_words'])))
+                .toList());
       case "ClozeTest":
         return TaskClozeTest(
             taskType,
@@ -84,14 +85,14 @@ class Task {
             List<String>.from(json['wrong_answers']));
       case "Clock":
         return ClockTest(
-          taskType, 
-          json['task_reward'],
-          json['lama_text'],
-          json['left_to_solve'],
-          json['uhr'],
-          json['timer'],
-          json['right_answer'],
-          json['wrong_answers']);
+            taskType,
+            json['task_reward'],
+            json['lama_text'],
+            json['left_to_solve'],
+            json['uhr'],
+            json['timer'],
+            json['right_answer'],
+            json['wrong_answers']);
       case "MarkWords":
         return TaskMarkWords(
             taskType,
@@ -128,6 +129,17 @@ class Task {
       case "MoneyTask":
         return TaskMoney(taskType, json['task_reward'], json['lama_text'],
             json['left_to_solve'], json['moneyAmount']);
+      case "NumberLine":
+        return TaskNumberLine(
+          taskType,
+          json['task_reward'],
+          json['lama_text'],
+          json['left_to_solve'],
+          List<int>.from(json['range']),
+          json["randomRange"],
+          json['steps'],
+          json['ontap'],
+        );
       case "VocableTest":
         var wordPairs = json['wordPairs'] as List;
         List<Pair<String, String>> wordPairList =
@@ -252,6 +264,7 @@ class TaskClozeTest extends Task {
     return s;
   }
 }
+
 ///Subclass of [Task] for the Tasktype "2Cards"
 ///
 ///Author: H.Bismo
@@ -274,6 +287,7 @@ class Task2Cards extends Task {
     return s;
   }
 }
+
 ///Subclass of [Task] for the Tasktype "Bild4Cards"
 ///
 ///Author: H.Bismo
@@ -304,7 +318,7 @@ class BildCard extends Task {
   String question;
   String rightAnswer;
   List<String> wrongAnswers;
-  
+
   BildCard(String taskType, int reward, String lamaText, int leftToSolve,
       this.question, this.rightAnswer, this.wrongAnswers)
       : super(taskType, reward, lamaText, leftToSolve);
@@ -319,6 +333,7 @@ class BildCard extends Task {
     return s;
   }
 }
+
 ///Subclass of [Task] for the Tasktype "MarkWords"
 ///
 ///Author: F.Leonhardt
@@ -479,6 +494,25 @@ class TaskMoney extends Task {
   }
 }
 
+///Subclass of [Task] for the Tasktype "NumberLine"
+///
+///Author: J.Decher
+class TaskNumberLine extends Task {
+  List<int> range;
+  bool randomrange;
+  int steps;
+  bool ontap;
+  TaskNumberLine(String taskType, int reward, String lamaText, int leftToSolve,
+      this.range, this.randomrange, this.steps, this.ontap)
+      : super(taskType, reward, lamaText, leftToSolve);
+
+  @override
+  String toString() {
+    String s = super.toString();
+    return s;
+  }
+}
+
 ///Subclass of [Task] for the Tasktype "VocableTest"
 ///
 ///Author: K.Binder
@@ -532,19 +566,20 @@ class TaskConnect extends Task {
   }
 }
 
-class TaskBuchstabieren extends Task{
-  List<TaskBuchstabierenWord> words; 
-  TaskBuchstabieren(String taskType, int reward, String lamaText, int leftToSolve, this.words) : super(taskType, reward, lamaText,leftToSolve);
-
-
+class TaskBuchstabieren extends Task {
+  List<TaskBuchstabierenWord> words;
+  TaskBuchstabieren(
+      String taskType, int reward, String lamaText, int leftToSolve, this.words)
+      : super(taskType, reward, lamaText, leftToSolve);
 }
-class TaskBuchstabierenWord{
+
+class TaskBuchstabierenWord {
   String image;
   String word;
   List<String> wrongWords;
-  TaskBuchstabierenWord(this.image, this.word, this.wrongWords);  
-
+  TaskBuchstabierenWord(this.image, this.word, this.wrongWords);
 }
+
 ///Subclass of [Task] for the Tasktype "Equation"
 ///
 ///Author: F.Leonhardt
@@ -597,23 +632,16 @@ class TaskEquation extends Task {
     return s;
   }
 }
-class TaskZerlegung extends Task { 
+
+class TaskZerlegung extends Task {
   List<int> answerParts;
   int rightAnswer;
   bool reverse;
-  
 
-  TaskZerlegung(String taskType, 
-                int reward,
-               String lamaText, 
-               int leftToSolve, 
-               this.reverse,
-               this.answerParts,
-               this.rightAnswer) 
-                 
-                 : super(taskType, reward, lamaText, leftToSolve);
+  TaskZerlegung(String taskType, int reward, String lamaText, int leftToSolve,
+      this.reverse, this.answerParts, this.rightAnswer)
+      : super(taskType, reward, lamaText, leftToSolve);
 
   // do toString Method
- 
 
 }

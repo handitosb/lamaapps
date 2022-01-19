@@ -45,18 +45,18 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
           wrongAnswerCallback(t);
           yield TaskAnswerResultState(false);
         }
-      } 
-      else if (t is TaskZerlegung) {
-          //print("Zelegung validation"); // To remove after
-        if (DeepCollectionEquality().equals(event.answerParts, t.answerParts) || DeepCollectionEquality().equals([...event.answerParts].reversed, t.answerParts)) {
+      } else if (t is TaskZerlegung) {
+        //print("Zelegung validation"); // To remove after
+        if (DeepCollectionEquality().equals(event.answerParts, t.answerParts) ||
+            DeepCollectionEquality()
+                .equals([...event.answerParts].reversed, t.answerParts)) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
         } else {
           wrongAnswerCallback(t);
           yield TaskAnswerResultState(false);
         }
-       }
-      else if (t is TaskMarkWords) {
+      } else if (t is TaskMarkWords) {
         if (equals(t.rightWords, event.providedanswerWords)) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
@@ -76,12 +76,11 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
         if (event.providedAnswer == t.rightAnswer) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
-        }else { 
+        } else {
           wrongAnswerCallback(t);
           yield TaskAnswerResultState(false);
-        } 
-      }
-        else if (t is TaskClozeTest) {
+        }
+      } else if (t is TaskClozeTest) {
         if (event.providedAnswer == t.rightAnswer) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
@@ -96,7 +95,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
         } else {
           wrongAnswerCallback(t);
           yield TaskAnswerResultState(false);
-        } 
+        }
       } else if (t is Bild4Cards) {
         if (event.providedAnswer == t.rightAnswer) {
           rightAnswerCallback(t);
@@ -138,8 +137,8 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
         }
-      } 
-       if (t is TaskBuchstabieren) {
+      }
+      if (t is TaskBuchstabieren) {
         if (event.providedAnswerBool == true) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
@@ -147,10 +146,17 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
           wrongAnswerCallback(t);
           yield TaskAnswerResultState(false);
         }
-      }
-      else if (t is TaskMoney) {
+      } else if (t is TaskMoney) {
         if (event.providedAnswerDouble.toStringAsFixed(2) ==
             t.moneyAmount.toStringAsFixed(2)) {
+          rightAnswerCallback(t);
+          yield TaskAnswerResultState(true);
+        } else {
+          wrongAnswerCallback(t);
+          yield TaskAnswerResultState(false);
+        }
+      } else if (t is TaskNumberLine) {
+        if (event.providedAnswerBool) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
         } else {
@@ -240,6 +246,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   void wrongAnswerCallback(Task t) {
     answerResults.add(false);
   }
+
   /// parses and evaluates a mathematical expression.
   ///
   /// Note that the pinpointing only works while using 1-2 operants.
@@ -400,5 +407,4 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     }
     return true;
   }
-
 }

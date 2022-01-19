@@ -48,6 +48,10 @@ class AnswerTaskEvent extends TaskEvent {
   AnswerTaskEvent.initMoneyTask(double providedAnswerDouble) {
     this.providedAnswerDouble = providedAnswerDouble;
   }
+  //Constructor used for [NumberLine]
+  AnswerTaskEvent.initNumberLine(bool providedAnswerBool) {
+    this.providedAnswerBool = providedAnswerBool;
+  }
   //Constructor used for [TaskVocableTest]
   AnswerTaskEvent.initVocableTest(this.providedanswerStates);
   //Constructor used for [TaskConnect]
@@ -66,7 +70,7 @@ class AnswerTaskEvent extends TaskEvent {
   AnswerTaskEvent.initBuchstabieren(bool fullAnswer) {
     this.providedAnswerBool = fullAnswer;
   }
-  AnswerTaskEvent.initZerlegung(List<int> answerParts){
-     this.answerParts = answerParts;
+  AnswerTaskEvent.initZerlegung(List<int> answerParts) {
+    this.answerParts = answerParts;
   }
 }
