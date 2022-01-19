@@ -22,7 +22,7 @@ class Taskset {
     grade = json['taskset_grade'];
     var tasksetTasks = json['tasks'] as List;
     List<Task> tasksetTasksList =
-        tasksetTasks.map((e) => Task.fromJson(e)).toList();
+        tasksetTasks.map((e) => Task.fromJson(e)).toList()..shuffle();
     for (int i = 0; i < tasksetTasksList.length; i++) {
       DatabaseProvider.db.setDoesStillExist(tasksetTasksList[i]);
     }
