@@ -2,37 +2,9 @@
     "taskset_name":"Standardaufgaben Klasse 1",
      "taskset_subject":"Sachkunde",
       "taskset_grade":1,
+      "taskset_randomize_order": true,
        "tasks": [
-        {
-          "task_type": "MatchRandom",
-          "task_reward": 12,
-          "lama_text": "Ordne die Staaten den Kontinenten zu",
-          "left_to_solve": 3,
-          "boxLeft": "Europa",
-          "boxMiddle": "Asien",
-          "boxRight": "Amerika",
-          "ansLeft": [
-            "Deutschland",
-            "Frankreich",
-            "Spanien",
-            "Italien"
-          ],
-          "ansMiddle": [
-            "Japan",
-            "China",
-            "Indien",
-            "Thailand",
-            "Südkorea"
-          ],
-          "ansRight": [
-              "USA",
-              "Canada",
-              "Brazilien",
-              "Argentina",
-              "Mexico"
-          ]
-      },
-           {
+         {
            "task_type":"4Cards",
             "task_reward":2,
             "question":"Der Igel gehört zu den .. ?",
@@ -60,13 +32,7 @@
            "categoryOne": ["Lama", "Alpaka", "Biber", "Delfin"],
            "categoryTwo": ["Schildkröte", "Krokodil", "Schlange", "Echse"]
          },
-         {
-           "task_type":"GridSelect",
-           "task_reward":3,
-           "lama_text":"Markiere X Nadelbäume",
-           "left_to_solve": 3,
-           "wordsToFind":["Fichte", "Kiefer", "Tanne"]
-         },
+         
          {
            "task_type": "Connect",
            "task_reward":2,

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\development\\flutter\\lama-master\\lama_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
+            "outputFile": "C:\\Users\\kouam\\OneDrive\\Dokumente\\Bachelor Wirtschaftsinformatik\\5.Semester\\github-lamaapps\\lamaapps\\Lama-apps\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\handi\\.gradle\\caches\\transforms-2\\files-2.1\\f72d677c3304574d718196533d4b807f\\core-1.7.0-rc01\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\kouam\\.gradle\\caches\\transforms-2\\files-2.1\\2b9563c72730edaf6809dab45e4e4475\\core-1.8.0-alpha02\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

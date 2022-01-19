@@ -2,6 +2,7 @@
   "taskset_name": "Standardaufgaben Klasse 1",
   "taskset_subject": "Deutsch",
   "taskset_grade": 1,
+  "taskset_randomize_order": true,
   "tasks": [
     {
       "task_type": "Connect",
@@ -34,6 +35,18 @@
         "rot",
         "blau",
         "gelb"
+      ]
+    },
+    {
+      "task_type": "BildCard",
+      "task_reward": 2,
+      "question": "https://cdn.pixabay.com/photo/2015/05/07/12/17/pear-756388__340.jpg",
+      "left_to_solve": 3,
+      "lama_text": "Um welche Obstorte handelt es sich?",
+      "right_answer": "Birne",
+      "wrong_answers": [
+        "Apfel",
+        "Kiwi"
       ]
     },
     {

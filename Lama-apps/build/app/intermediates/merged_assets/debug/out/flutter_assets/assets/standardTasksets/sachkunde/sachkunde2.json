@@ -2,6 +2,7 @@
     "taskset_name":"Standardaufgaben Klasse 2",
      "taskset_subject":"Sachkunde",
       "taskset_grade":2,
+      "taskset_randomize_order": true,
        "tasks": [
          {
            "task_type":"ClozeTest",
@@ -37,6 +38,15 @@
            "left_to_solve": 3,
            "wordsToFind":["Karotte", "Sellerie", "Zwiebel", "Spargel"]
          },
+         {
+          "task_type":"4Cards",
+          "task_reward":2,
+          "question":"Was ist die Hauptstadt von Frankreich?",
+          "lama_text":"Tippe die richtige Antwort an!",
+          "left_to_solve": 4,
+          "right_answer":"Paris",
+          "wrong_answers":["Düsseldorf", "Straßburg", "Toulouse"]
+        },
          {
            "task_type": "MatchCategory",
            "task_reward":2,

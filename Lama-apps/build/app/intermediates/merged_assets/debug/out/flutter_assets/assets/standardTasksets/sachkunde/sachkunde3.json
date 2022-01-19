@@ -2,6 +2,7 @@
     "taskset_name":"Standardaufgaben Klasse 3",
      "taskset_subject":"Sachkunde",
       "taskset_grade":3,
+      "taskset_randomize_order": true,
        "tasks": [
           {
             "task_type":"BildCard",
@@ -47,6 +48,25 @@
            "left_to_solve": 3,
            "wordsToFind":["Brocken", "Watzmann", "Höfats"]
          },
+         {
+          "task_type": "MatchCategory",
+          "task_reward":2,
+          "lama_text": "Schiebe jedes Wort in die Richtige Kategorie",
+          "left_to_solve": 3,
+          "nameCatOne": "Deutschland",
+          "nameCatTwo": "Europa",
+          "categoryOne": ["Dortmund", "Nürnberg", "Bad Nauheim", "Köln"],
+          "categoryTwo": ["Frankreich", "Italien", "Schweiz", "Belgium"]
+        },
+        {
+          "task_type":"4Cards",
+          "task_reward":2,
+          "question":"Was ist die Hauptstadt von Deutschland?",
+          "lama_text":"Tippe die richtige Antwort an!",
+          "left_to_solve": 4,
+          "right_answer":"Berlin",
+          "wrong_answers":["Hamburg", "Trochäus", "Köln"]
+        },
          {
            "task_type": "Connect",
            "task_reward":2,
