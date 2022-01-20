@@ -22,7 +22,7 @@ class Taskset {
     grade = json['taskset_grade'];
     var tasksetTasks = json['tasks'] as List;
     List<Task> tasksetTasksList =
-        tasksetTasks.map((e) => Task.fromJson(e)).toList()..shuffle();
+        tasksetTasks.map((e) => Task.fromJson(e)).toList();
     for (int i = 0; i < tasksetTasksList.length; i++) {
       DatabaseProvider.db.setDoesStillExist(tasksetTasksList[i]);
     }
@@ -31,6 +31,7 @@ class Taskset {
       randomTaskAmount = tasks.length;
       if (json.containsKey('taskset_randomize_order')) {
         randomizeOrder = json["taskset_randomize_order"];
+        if(randomizeOrder) tasks.shuffle();
       } else
         randomizeOrder = false;
     } else {

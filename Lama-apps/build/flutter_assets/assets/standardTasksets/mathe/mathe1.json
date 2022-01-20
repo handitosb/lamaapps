@@ -2,6 +2,7 @@
     "taskset_name": "Standardaufgaben Klasse 1",
     "taskset_subject": "Mathe",
     "taskset_grade": 1,
+    "taskset_randomize_order": true,
     "tasks": [
         
         {
@@ -15,7 +16,33 @@
                 "-"
             ]
         },
-
+        {
+            "task_type": "NumberLine",
+            "task_reward": 1,
+            "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+            "left_to_solve": 3,
+            "range": [ 
+                 0,
+                 100
+              ],
+            "randomRange": false,
+            "steps": 5,
+            "ontap": true
+          },
+        {
+            "task_type": "NumberLine",
+            "task_reward": 1,
+            "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+            "left_to_solve": 3,
+            "range": [ 
+                 0,
+                 100
+              ],
+            "randomRange": false,
+            "steps": 5,
+            "ontap": false
+          },
+          
         {
             "task_type": "Clock",
             "task_reward": 2,
@@ -24,23 +51,7 @@
             "uhr": "vollStunde",
             "timer": false
         },
-        {
-            "task_type": "Equation",
-            "task_reward": 2,
-            "lama_text": "Löse die Gleichung!",
-            "left_to_solve": 4,
-            "random_allowed_operators": [
-                "+",
-                "/"
-            ],
-            "operand_range": [
-                0,
-                5
-            ],
-            "fields_to_replace": 1,
-            "allow_replacing_operators": false,
-            "operator_amount": 2
-        },
+        
         {
             "task_type": "4Cards",
             "task_reward": 2,
@@ -131,7 +142,6 @@
                 "+",
                 "2",
                 "+",
-                "?",
                 "=",
                 "4"
             ],
@@ -143,39 +153,7 @@
                 "5",
                 "1"
             ]
-        },
-        {
-            "task_type": "Equation",
-            "task_reward": 2,
-            "lama_text": "Löse die Gleichung!",
-            "left_to_solve": 4,
-            "random_allowed_operators": [
-                "+"
-            ],
-            "operand_range": [
-                0,
-                10
-            ],
-            "fields_to_replace": 1,
-            "allow_replacing_operators": false,
-            "operator_amount": 1
-        },
-        {
-            "task_type": "Equation",
-            "task_reward": 2,
-            "lama_text": "Löse die Gleichung!",
-            "left_to_solve": 4,
-            "random_allowed_operators": [
-                "+",
-                "-"
-            ],
-            "operand_range": [
-                0,
-                10
-            ],
-            "fields_to_replace": 1,
-            "allow_replacing_operators": false,
-            "operator_amount": 2
         }
+
     ]
 }

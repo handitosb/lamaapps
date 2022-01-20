@@ -39,6 +39,14 @@
            "wordsToFind":["Finnland", "Irland", "Belgien", "Ungarn"]
          },
          {
+          "task_type":"MarkWords",
+          "task_reward":2,
+          "lama_text":"Tippe alle Verben an!",
+          "left_to_solve": 3,
+          "sentence": "Anna geht früh ins Bett, aber sie schläft nicht sofort!",
+          "right_words": ["geht", "schläft"]
+        },
+         {
            "task_type": "MatchCategory",
            "task_reward":2,
            "lama_text": "Schiebe jedes Wort in die Richtige Kategorie",

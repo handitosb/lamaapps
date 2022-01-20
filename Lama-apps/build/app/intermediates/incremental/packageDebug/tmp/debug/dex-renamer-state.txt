@@ -1,4 +1,4 @@
-#Thu Jan 13 12:53:08 CET 2022
-base.0=F\:\\development\\flutter\\lama-master\\lama_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Thu Jan 20 15:22:52 CET 2022
+base.0=C\:\\Users\\kouam\\OneDrive\\Dokumente\\Bachelor Wirtschaftsinformatik\\5.Semester\\github-lamaapps\\lamaapps\\Lama-apps\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
