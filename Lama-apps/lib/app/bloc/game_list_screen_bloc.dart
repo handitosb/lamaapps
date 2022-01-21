@@ -4,6 +4,8 @@ import 'package:lama_app/app/event/game_list_screen_event.dart';
 import 'package:lama_app/app/repository/user_repository.dart';
 import 'package:lama_app/app/screens/climber_game_screen.dart';
 import 'package:lama_app/app/screens/flappy_game_screen.dart';
+import 'package:lama_app/app/screens/flutters_game_screen.dart';
+import 'package:lama_app/app/screens/happybird_game_screen.dart';
 import 'package:lama_app/app/screens/snake_screen.dart';
 import 'package:lama_app/app/state/game_list_screen_state.dart';
 import 'package:lama_app/util/LamaColors.dart';
@@ -53,6 +55,12 @@ void _navigateToGame(String gameName, BuildContext context,
       break;
     case "Affen-Leiter":
       gameToLaunch = ClimberGameScreen(userRepository);
+      break;
+    case "Flybird":
+      gameToLaunch = FluttersGameScreen(userRepository);
+      break;
+    case "HappyBird":
+      gameToLaunch = HappyBirdGameScreen(userRepository);
       break;
     default:
       throw Exception("Trying to launch game that does not exist");

@@ -17,12 +17,16 @@ class GameListScreen extends StatelessWidget {
   ///
   ///If a new game is added, it will need to be "registered" here.
   static final List<GameListItem> games = [
-    GameListItem("Snake", 16,
+    GameListItem("Snake", 14,
         "Steuer die Schlange mit den Pfeiltasten und sammle Äpfel, um länger zu werden!"),
-    GameListItem("Flappy-Lama", 15,
+    GameListItem("Flappy-Lama", 16,
         "Tippe auf den Bildschirm, um das Lama fliegen zu lassen und weiche dabei den Hindernissen aus!"),
     GameListItem("Affen-Leiter", 18,
         "Tippe die entsprechende Richtung an, um auf die andere Seite des Baumes zu springen und so den Ästen auszuweichen!"),
+    GameListItem("Flybird", 20,
+        "Tippe rechts oder links auf den Bildschirm, um den Vogel fliegen zu lassen und achte auf die Hindernisse!"),
+    GameListItem("HappyBird", 0,
+        "Tippe auf den Bildschirm, um den Vogel fliegen zu lassen und achte auf die Hindernisse!"),
   ];
 
   @override
