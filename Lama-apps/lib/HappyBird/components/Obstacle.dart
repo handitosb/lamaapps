@@ -83,18 +83,18 @@ class Obstacle extends Component {
 
       // start of the hole
       if (_holeIndex == i + 1) {
-        tmp.sprite = Sprite('png/200.png');
+        tmp.sprite = Sprite('png/obstacle.png');
         _sprites.add(tmp);
       }
       // end of the hole
       else if (_holeIndex + _holeSize == i) {
-        tmp.sprite = Sprite('png/200.png');
+        tmp.sprite = Sprite('png/obstacle.png');
         _sprites.add(tmp);
       }
       // body of the obstacle
       else if (!(i >= _holeIndex &&
           i <= _holeIndex + _holeSize)) {
-        tmp.sprite = Sprite('png/200.png');
+        tmp.sprite = Sprite('png/obstacle.png');
         _sprites.add(tmp);
       }
 
