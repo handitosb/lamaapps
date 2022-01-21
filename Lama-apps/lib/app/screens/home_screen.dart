@@ -433,54 +433,6 @@ class _HomeScreenState extends State<HomeScreen> {
       children.add(SizedBox(height: (constraints.maxHeight / 100) * 2.5));
     }
     if (tasksetRepository
-            .getTasksetsForSubjectAndGrade("Deutsch", userRepository.getGrade())
-            .length >
-        0) {
-      children.add(ElevatedButton(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Center(
-              child: Text(
-                "Kleiner",
-                style: LamaTextTheme.getStyle(),
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: CircleAvatar(
-                child: SvgPicture.asset(
-                  'assets/images/svg/MainMenu_Icons/kleiner_icon.svg',
-                  semanticsLabel: 'EnglischIcon',
-                ),
-                backgroundColor: LamaColors.mainPink,
-              ),
-            )
-          ],
-        ),
-        style: ElevatedButton.styleFrom(
-            primary: LamaColors.mainPink,
-            minimumSize: Size(
-              (constraints.maxWidth / 100) * 80,
-              ((constraints.maxHeight / 100) * 10),
-            ),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50)))),
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => BlocProvider(
-              create: (BuildContext context) =>
-                  ChooseTasksetBloc(context.read<TasksetRepository>()),
-              child: ChooseTasksetScreen(
-                  "Deutsch", userRepository.getGrade(), userRepository),
-            ),
-          ),
-        ).then((value) => (setState(() {}))),
-      ));
-      children.add(SizedBox(height: (constraints.maxHeight / 100) * 2.5));
-    }
-    if (tasksetRepository
             .getTasksetsForSubjectAndGrade(
                 "Sachkunde", userRepository.getGrade())
             .length >
