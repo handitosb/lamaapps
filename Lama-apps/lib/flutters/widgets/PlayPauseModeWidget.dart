@@ -19,7 +19,7 @@ class PlayPauseModeWidget extends StatelessWidget {
     return Align(
         alignment: Alignment.bottomLeft,
         child: Padding(
-            padding: EdgeInsets.only(bottom: 80),
+            padding: EdgeInsets.only(bottom: 30),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

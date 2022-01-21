@@ -18,8 +18,8 @@ class Screen_start extends StatelessWidget {
   Widget build(BuildContext context){
     return Center(
       child: Container (
-          height: MediaQuery.of(context).size.height * 0.85,
-          width: MediaQuery.of(context).size.width * 0.95,
+          height: MediaQuery.of(context).size.height * 0.99,
+          width: MediaQuery.of(context).size.width * 0.99,
           child: Card(
             margin: EdgeInsets.symmetric(
                 horizontal: 25.0,
@@ -57,13 +57,13 @@ class Screen_start extends StatelessWidget {
                       style: TextStyle(
                         color: LamaColors.bluePrimary,
                         fontWeight: FontWeight.bold,
-                        fontSize: 35.0,
+                        fontSize: 30.0,
                       ),
                     ),
                     Text(
-                      "\nTippe rechts oder links auf den Bildschirm, damit der Vogel nach oben fliegen kann und achte dabei auf die Hindernisse.\n\nAb 200 Punkte erhältst du ein PIN für die Freischaltung von HappyBird.",
+                      "\nTippe rechts oder links auf den Bildschirm, damit der Vogel nach oben fliegen kann und achte dabei auf die Hindernisse.\n\nAb 200 Punkte erhältst du ein PIN für die Freischaltung von HappyBird.\n\n",
                       style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 18.0,
                         color: LamaColors.black,
                       ),
                       textAlign: TextAlign.center,
@@ -99,7 +99,7 @@ class Screen_start extends StatelessWidget {
                       ),
                       child: Text(
                         "Start",
-                        style: TextStyle(fontSize: 35.0),
+                        style: TextStyle(fontSize: 30.0),
                       ),
                       onPressed: () {
                         onStartPressed.call();

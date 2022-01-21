@@ -37,7 +37,7 @@ class Obstacle extends Component {
   /// flag if the components are moving
   bool _moving = false;
   /// pixel each component will move on the y coordinate
-  double _moveWidth = 96;
+  double _moveWidth = 70;
   /// pixel left which the components has to move
   double _moveTimeLeft = 0;
   /// Time how long the movements takes
@@ -121,7 +121,7 @@ class Obstacle extends Component {
       collisionCloud = _clouds[0];
     }
     else {
-      collisionCloud = _clouds[index + 1];
+      collisionCloud = _clouds[index +1];
 
     }
 

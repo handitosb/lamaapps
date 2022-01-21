@@ -33,7 +33,7 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
   final int tilesX = 9;
 
   /// size of the bird
-  final double _birdSize = 60;
+  final double _birdSize = 55;
 
   /// name of the start screen widget
   final startWidgetName = "start";
@@ -222,7 +222,7 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
 
     // add clouds
     _obstacle =
-    Obstacle(this, _birdSize , _birdSize / 4, _animationTime)
+    Obstacle(this, _birdSize, _birdSize / 4, _animationTime)
       ..onCloudsMoved = increaseScore;
     add(_obstacle);
 
@@ -296,14 +296,15 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
 
   void resize(Size size) {
     screenSize = Size(
-        MediaQuery.of(_context).size.width -
+        MediaQuery.of(_context).size.width-
             MediaQuery.of(_context).padding.left -
             MediaQuery.of(_context).padding.right,
         MediaQuery.of(_context).size.height -
-            MediaQuery.of(_context).padding.top -
+            MediaQuery.of(_context).padding.top / 0.5 -
             MediaQuery.of(_context).padding.bottom);
 
-    cloudSize = screenSize.width / tilesX;
+
+    cloudSize = (MediaQuery.of(_context).size.width) / tilesX;
 
     super.resize(size);
   }

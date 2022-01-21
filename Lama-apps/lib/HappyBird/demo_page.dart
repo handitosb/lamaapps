@@ -55,8 +55,8 @@ class _DemoPageState extends State<DemoPage> {
 
       return Center(
         child: Container (
-            height: MediaQuery.of(context).size.height * 0.85,
-            width: MediaQuery.of(context).size.width * 0.95,
+            height: MediaQuery.of(context).size.height * 0.99,
+            width: MediaQuery.of(context).size.width * 0.99,
             child: Card(
               margin: EdgeInsets.symmetric(
                   horizontal: 25.0,
@@ -94,13 +94,13 @@ class _DemoPageState extends State<DemoPage> {
                         style: TextStyle(
                           color: LamaColors.bluePrimary,
                           fontWeight: FontWeight.bold,
-                          fontSize: 35.0,
+                          fontSize: 30.0,
                         ),
                       ),
                       Text(
                         "\nFür die Freischaltung muss du bei Flybird mindestens 200 Punkte erreichen, dann erhält du ein PIN. Viel Spaß!\n\nDrücke auf den Bildschirm, um den Vogel ein wenig Auftrieb zu verleihen und achte dabei auf die Hindernisse, sowie den unteren Bildschirmrand.\n",
                         style: TextStyle(
-                          fontSize: 20.0,
+                          fontSize: 15.0,
                           color: LamaColors.black,
                         ),
                         textAlign: TextAlign.center,
@@ -136,7 +136,7 @@ class _DemoPageState extends State<DemoPage> {
                           ),
                           child: Text(
                             "Start",
-                            style: TextStyle(fontSize: 35.0),
+                            style: TextStyle(fontSize: 30.0),
                           ),
                           onPressed: () {
                             if (isAuthenticated) {
