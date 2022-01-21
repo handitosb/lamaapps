@@ -5,18 +5,21 @@
   "taskset_randomize_order": true,
   "tasks": [
     {
-      "task_type": "4Cards",
+      "task_type": "Clock",
       "task_reward": 2,
-      "question": "Was ist das Ergebnis der Multiplikation ?",
-      "lama_text": "Tippe die richtige Antwort an!",
+      "lama_text": "Wie viel Uhr ist es?",
       "left_to_solve": 3,
-      "right_answer": "Produkt",
-      "wrong_answers": [
-        "Summe",
-        "Differenz",
-        "Quotient"
-      ]
-    },
+      "uhr": "vollStunde",
+      "timer": false
+  },
+  {
+    "task_type": "Clock",
+    "task_reward": 2,
+    "lama_text": "Wie viel Uhr ist es?",
+    "left_to_solve": 3,
+    "uhr": "halbeStunde",
+    "timer": false
+},
     {
       "task_type": "4Cards",
       "task_reward": 2,

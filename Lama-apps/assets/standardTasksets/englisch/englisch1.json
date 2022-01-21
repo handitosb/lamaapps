@@ -12,6 +12,18 @@
             "wordPairs": [{"word":"house","translation":"Haus"}, {"word":"sun", "translation":"Sonne"}],
             "randomizeSide": true
           },
+          {
+            "task_type": "BildCard",
+            "task_reward": 2,
+            "question": "https://cdn.pixabay.com/photo/2012/04/16/12/38/book-35811_960_720.png",
+            "left_to_solve": 3,
+            "lama_text": "which word corresponds to the image!",
+            "right_answer": "book",
+            "wrong_answers": [
+              "bag",
+              "back"
+            ]
+          },
            {
            "task_type":"4Cards",
             "task_reward":2,
