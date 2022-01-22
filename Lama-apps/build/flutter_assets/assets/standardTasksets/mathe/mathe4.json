@@ -55,8 +55,7 @@
             "steps": 5,
             "ontap": true
           },
-        
-        {
+          {
             "task_type": "MoneyTask",
             "task_reward": 2,
             "lama_text": "Sammle 13,87€ mit den Münzen zusammen",
