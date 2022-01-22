@@ -32,7 +32,7 @@ class HappyBirdGame extends BaseGame with TapDetector, HasWidgetsOverlay {
   final int tilesX = 9;
 
   /// size of the bird
-  final double _birdSize = 50;
+  final double _birdSize = 45;
   // name of the pauseMode widget
   final String _pauseMode = "PauseMode";
   // name of the playMode widget
