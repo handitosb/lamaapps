@@ -5,16 +5,16 @@
   "taskset_randomize_order": true,
   "tasks": [
     {
-      "task_type": "4Cards",
+      "task_type": "Bild4Cards",
       "task_reward": 2,
-      "question": "What does 'shoe' mean in german?",
-      "lama_text": "Tap the right Answer!",
+      "question": "https://cdn.pixabay.com/photo/2017/07/17/21/58/tomato-2514018_960_720.png",
       "left_to_solve": 3,
-      "right_answer": "Schuh",
+      "lama_text": "Which fruit is in the picture and which color? ",
+      "right_answer": "red tomate",
       "wrong_answers": [
-        "Schatten",
-        "Schule",
-        "Fisch"
+        "red apple",
+        "red orange",
+        "red fruit"
       ]
     },
     {
@@ -33,13 +33,13 @@
     {
       "task_type": "ClozeTest",
       "task_reward": 2,
-      "question": "I am __ to school",
-      "lama_text": "Tap the right Answer!",
+      "question": "5>3 : Fünf ist größer als drei.",
+      "lama_text": "Wähle aus!",
       "left_to_solve": 3,
-      "right_answer": "going",
+      "right_answer": "Five is greater than three",
       "wrong_answers": [
-        "go",
-        "horse"
+        "Five is less than three",
+        "Five is equal to three"
       ]
     },
     {
@@ -56,10 +56,10 @@
       "task_reward":2,
       "lama_text": "Move each word in the correct category!",
       "left_to_solve": 3,
-      "nameCatOne": "Simple Present",
-      "nameCatTwo": "Simple Past",
-      "categoryOne": ["work", "go", "see", "sell"],
-      "categoryTwo": ["worked", "went", "saw", "sold"]
+      "nameCatOne": "numbers",
+      "nameCatTwo": "letters",
+      "categoryOne": ["95", "40", "10", "88"],
+      "categoryTwo": ["eighty-eight", "ten", "ninety-five", "forty"]
     },
     {
       "task_type": "MatchCategory",

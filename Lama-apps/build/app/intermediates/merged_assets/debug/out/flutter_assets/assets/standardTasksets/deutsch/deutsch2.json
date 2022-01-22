@@ -4,12 +4,23 @@
       "taskset_grade":2,
       "taskset_randomize_order": true,
        "tasks": [
-        {
-          "task_type":"GridSelect",
-           "task_reward":3,
-           "lama_text":"Markiere X Fahrzeuge",
-           "left_to_solve": 3,
-           "wordsToFind":["auto", "Bus", "Flugzeug", "Minivan"]
+        
+            {
+              "task_type":"ClozeTest",
+              "task_reward":2,
+              "question":"Anna __ früh ins Bett",
+              "lama_text":"Tippe die richtige Antwort an!",
+              "left_to_solve": 3,
+              "right_answer":"geht",
+              "wrong_answers":["macht", "schwimmt"]
+            },
+            {
+              "task_type":"MarkWords",
+              "task_reward":2,
+              "lama_text":"Tippe alle Verben an!",
+              "left_to_solve": 3,
+              "sentence": "Anna geht früh ins Bett, aber sie schläft nicht sofort!",
+              "right_words": ["geht", "schläft"]
             },
            {
            "task_type":"4Cards",
@@ -31,14 +42,25 @@
            "categoryTwo": ["Haus", "Straße", "Baum", "Auto"]
          },
          {
-           "task_type":"ClozeTest",
-           "task_reward":2,
-           "question":"Der Koffer steht __ dem Schrank",
-           "lama_text":"Tippe die richtige Antwort an!",
-           "left_to_solve": 3,
-           "right_answer":"hinter",
-           "wrong_answers":["bis", "aus"]
-         },
+          "task_type":"ClozeTest",
+          "task_reward":2,
+          "question":"Der Koffer steht __ dem Schrank",
+          "lama_text":"Tippe die richtige Antwort an!",
+          "left_to_solve": 3,
+          "right_answer":"hinter",
+          "wrong_answers":["bis", "aus"]
+        },{
+          "task_type": "ClozeTest",
+          "task_reward": 2,
+          "question": "__ Dino ist groß",
+          "lama_text": "Tippe die richtige Antwort an!",
+          "left_to_solve": 3,
+          "right_answer": "Der",
+          "wrong_answers": [
+            "Die",
+            "Das"
+          ]
+        },
          {
            "task_type":"MarkWords",
            "task_reward":2,
