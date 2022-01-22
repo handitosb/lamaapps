@@ -4,6 +4,15 @@
       "taskset_grade":3,
       "taskset_randomize_order": true,
        "tasks": [
+        {
+          "task_type":"ClozeTest",
+          "task_reward":2,
+          "question":"Where __ __ live?",
+          "lama_text":"Tap the right Answer!",
+          "left_to_solve": 3,
+          "right_answer":"I live in cameroon.",
+          "wrong_answers":["In cameroon i live", "live i in cameroon."]
+        },
            {
            "task_type":"4Cards",
             "task_reward":2,
@@ -16,13 +25,13 @@
          {
            "task_type": "ClozeTest",
            "task_reward": 2,
-           "question": "I am __ to school",
+           "question": "Where from do come ? you",
            "lama_text": "Tap the right Answer!",
            "left_to_solve": 3,
-           "right_answer": "going",
+           "right_answer": "Where do you come from?",
            "wrong_answers": [
-             "go",
-             "horse"
+             "Where you do come from?",
+             "Where from do you come?"
            ]
          },
          {
@@ -44,6 +53,18 @@
            "categoryOne": ["work", "go", "see", "sell"],
            "categoryTwo": ["worked", "went", "saw", "sold"]
          },
+         {
+          "task_type": "ClozeTest",
+          "task_reward": 2,
+          "question": ". from Manchester I'm",
+          "lama_text": "Tap the right Answer!",
+          "left_to_solve": 3,
+          "right_answer": "I'm from Manchester.",
+          "wrong_answers": [
+            "from I'm Manchester.",
+            "Manchester I'm from."
+          ]
+        },
          {
            "task_type": "MatchCategory",
            "task_reward":2,

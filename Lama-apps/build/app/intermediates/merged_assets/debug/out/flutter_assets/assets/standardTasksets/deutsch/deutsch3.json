@@ -13,6 +13,17 @@
             "right_answer":"grün",
              "wrong_answers":["begrünen", "reden", "lesen"]
              },
+             {
+              "task_type": "GridSelect",
+              "task_reward": 2,
+              "left_to_solve": 3,
+              "lama_text": "Markiere X Farben!",
+              "wordsToFind": [
+                "rot",
+                "blau",
+                "gelb"
+              ]
+            },
          {
            "task_type":"ClozeTest",
            "task_reward":2,

@@ -4,6 +4,14 @@
       "taskset_grade":2,
       "taskset_randomize_order":true,
        "tasks": [
+         {
+            "task_type":"VocableTest",
+            "task_reward":5,
+            "lama_text": "Translate the shown word!",
+            "left_to_solve": 3,
+            "wordPairs": [{"word":"house","translation":"Haus"}, {"word":"sun", "translation":"Sonne"}],
+            "randomizeSide": true
+          },
            {
                 "task_type":"4Cards",
                 "task_reward":2,
@@ -14,12 +22,42 @@
                 "wrong_answers":["Baum", "Boden", "Apfel"]
              },
              {
+               "task_type": "Connect",
+               "task_reward":2,
+               "left_to_solve": 3,
+               "lama_text": "Select the matching right words for each left word",
+               "pair1": ["Mutter", "Vater", "Bruder", "Schwester"],
+               "pair2": ["Mother", "Father", "Brother", "Sister"],
+               "rightAnswers": ["Mutter:Mother", "Vater:Father", "Bruder:Brother", "Schwester:Sister"]
+             },
+             {
+               "task_type":"4Cards",
+               "task_reward":2,
+               "question":"What does 'Wasser' mean in english?",
+               "lama_text":"Tippe die richtige Antwort an!",
+               "left_to_solve": 3,
+               "right_answer":"water",
+               "wrong_answers":["house", "sun", "apple"]
+             },
+             {
                 "task_type":"VocableTest",
                 "task_reward":5,
                 "lama_text": "Translate the shown word!",
                 "left_to_solve": 3,
                 "wordPairs": [{"word":"window","translation":"Fenster"}, {"word":"Eimer", "translation":"bucket"}],
                 "randomizeSide": true
+             },
+             {
+               "task_type": "BildCard",
+               "task_reward": 2,
+               "question": "https://media.istockphoto.com/photos/gaillardia-antique-flower-illustrations-picture-id617564116",
+               "left_to_solve": 3,
+               "lama_text": "which word corresponds to the image!",
+               "right_answer": "flower",
+               "wrong_answers": [
+                 "grass",
+                 "flowerpot"
+               ]
              }
         ]
 }

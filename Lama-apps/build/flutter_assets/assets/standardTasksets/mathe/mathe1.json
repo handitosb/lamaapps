@@ -5,28 +5,6 @@
     "taskset_randomize_order": true,
     "tasks": [
         {
-            "task_type": "2Cards",
-            "task_reward": 2,
-            "question": "Welches Zeichen steht für die Addition ?",
-            "lama_text": "Tippe die richtige Antwort an!",
-            "left_to_solve": 3,
-            "right_answer": "+",
-            "wrong_answers": [
-                "-"
-            ]
-        },
-        {
-            "task_type": "2Cards",
-            "task_reward": 2,
-            "question": "Welches Zeichen steht für die Addition ?",
-            "lama_text": "Tippe die richtige Antwort an!",
-            "left_to_solve": 3,
-            "right_answer": "+",
-            "wrong_answers": [
-                "-"
-            ]
-        },
-        {
             "task_type": "NumberLine",
             "task_reward": 1,
             "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
@@ -51,17 +29,7 @@
             "randomRange": false,
             "steps": 5,
             "ontap": false
-          },
-          
-        {
-            "task_type": "Clock",
-            "task_reward": 2,
-            "lama_text": "Wie viel Uhr ist es?",
-            "left_to_solve": 3,
-            "uhr": "vollStunde",
-            "timer": false
         },
-        
         {
             "task_type": "4Cards",
             "task_reward": 2,
