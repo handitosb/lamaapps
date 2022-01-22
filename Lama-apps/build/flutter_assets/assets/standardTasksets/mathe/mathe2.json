@@ -29,6 +29,74 @@
                 "x",
                 "%"
             ]
-        }
+        },
+        {
+            "task_type": "Equation",
+            "task_reward": 2,
+            "lama_text": "Löse die Gleichung!",
+            "left_to_solve": 4,
+            "equation": [
+                "?",
+                "+",
+                "7",
+                "+",
+                "=",
+                "14"
+            ],
+            "options": [
+                "3",
+                "4",
+                "7",
+                "2",
+                "5",
+                "1"
+            ]
+        },
+        {
+            "task_type": "Equation",
+            "task_reward": 2,
+            "lama_text": "Löse die Gleichung!",
+            "left_to_solve": 4,
+            "equation": [
+                "?",
+                "+",
+                "9",
+                "+",
+                "=",
+                "16"
+            ],
+            "options": [
+                "7",
+                "8",
+                "0",
+                "2",
+                "5",
+                "1"
+            ]
+        },
+        {
+            "task_type": "Equation",
+            "task_reward": 2,
+            "lama_text": "Löse die Gleichung!",
+            "left_to_solve": 4,
+            "operand_range": [
+               0,
+               5
+            ],
+            "fields_to_replace": 2,
+            "allow_replacing_operators": true
+         },
+         {
+            "task_type": "Equation",
+            "task_reward": 2,
+            "lama_text": "Löse die Gleichung!",
+            "left_to_solve": 4,
+            "operand_range": [
+               0,
+               15
+            ],
+            "fields_to_replace": 2,
+            "allow_replacing_operators": true
+         }
     ]
 }
