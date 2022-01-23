@@ -13,6 +13,25 @@
       "pair2": ["Wasser", "Wüste", "Nordpol", "Dschungel"],
       "rightAnswers": ["Fisch:Wasser", "Löwe:Wüste", "Eisbär:Nordpol", "Affe:Dschungel"]
     },
+
+    {
+      "task_type" :"Buchstabieren",
+      "task_reward": 2,
+      "lama_text":"Passende Wort zu dem richtigem Bild",
+      "left_to_solve": 3,
+      "words": [{"word":"Mama", "wrong_words": ["Baby", "Baum" , "Buch" ,"Tante" ,"Tochter" ,"Schwester"], 
+        "image" :"https://media.istockphoto.com/photos/loving-biracial-mom-hug-cute-little-baby-child-picture-id1224568084?s=612x612"},
+          {"word":"Lama",  "wrong_words": ["Hund", "Katze" ,"Giraffe", "Schaff", "Affe", "Wolf"], 
+            "image" :"https://media.istockphoto.com/photos/female-llama-with-babies-picture-id468364850?s=612x612"},
+          {"word":"Oma",  "wrong_words": ["Mutter", "Vater" ,"Pflanze", "Blumen" ,"Baby" ,  "Onkel"],  
+            "image" :"https://media.istockphoto.com/photos/see-no-good-reason-to-act-my-age-picture-id517234226"},
+            {"word":"Buch" ,"wrong_words" :["Heft" ,"Heft", "Bleistift" , "Hemd" ,"Schuhe" , "Gummi"], 
+            "image": "https://media.istockphoto.com/photos/stack-of-books-picture-id157482029"},
+          {"word":"Hund",  "wrong_words": ["Vogel" ,"Löwe", "Elephant" , "Huhn", "Sclange","Fliege"] ,
+           "image" :"https://cdn.pixabay.com/photo/2019/08/19/07/45/dog-4415649_960_720.jpg"} ]
+      
+  },
+
     {
       "task_type": "Bild4Cards",
       "task_reward": 2,
