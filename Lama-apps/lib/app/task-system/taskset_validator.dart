@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:lama_app/util/pair.dart';
 
 ///This class provides methods to validate a [Taskset] and a [Task].
