@@ -113,7 +113,7 @@ class GameListScreen extends StatelessWidget {
     Color color = LamaColors.orangeAccent;
     if (index % 2 == 0) color = LamaColors.blueAccent;
     return Container(
-        height: MediaQuery.of(context).size.height * 0.27,
+        height: (constraints.maxHeight / 100) * 31,
       decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(25),
