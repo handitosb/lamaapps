@@ -40,12 +40,21 @@
       "task_reward": 2,
       "question": "https://cdn.pixabay.com/photo/2021/02/10/09/23/house-6001425_960_720.png",
       "left_to_solve": 3,
-      "lama_text": "Um welche Obstorte handelt es sich?",
+      "lama_text": "Wähle die richtige Antwort!",
       "right_answer": "Ha",
       "wrong_answers": [
         "us",
         "wai"
       ]
+    },
+    {
+      "task_type": "Connect",
+      "task_reward":2,
+      "left_to_solve": 3,
+      "lama_text": "Wähle zu jedem linken Wort die passenden rechten Wörter aus",
+      "pair1": ["Na", "Ha", "Tie", "Af"],
+      "pair2": ["us", "se", "re", "fe"],
+      "rightAnswers": ["Ha:us", "Tie:re", "Na:se", "Af:fe"]
     },
     {
       "task_type": "4Cards",
