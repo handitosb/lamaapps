@@ -18,16 +18,12 @@
             ]
         },
         {
-            "task_type": "2Cards",
+            "task_type": "MoneyTask",
             "task_reward": 2,
-            "question": "8",
-            "lama_text": "Ist die Zahl gerade oder Ungerade?",
+            "lama_text": "Sammle 2,23€ mit den Münzen zusammen",
             "left_to_solve": 3,
-            "right_answer": "Gerade",
-            "wrong_answers": [
-                "Ungerade"
-            ]
-        },
+            "moneyAmount": 2.23
+          },
         {
             "task_type": "4Cards",
             "task_reward": 2,
