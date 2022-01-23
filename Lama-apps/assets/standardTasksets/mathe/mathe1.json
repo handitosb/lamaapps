@@ -52,15 +52,6 @@
             "steps": 5,
             "ontap": false
           },
-          
-        {
-            "task_type": "Clock",
-            "task_reward": 2,
-            "lama_text": "Wie viel Uhr ist es?",
-            "left_to_solve": 3,
-            "uhr": "vollStunde",
-            "timer": false
-        },
         
         {
             "task_type": "4Cards",

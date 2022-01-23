@@ -5,17 +5,12 @@
     "taskset_randomize_order": true,
     "tasks": [
         {
-            "task_type": "4Cards",
+            "task_type": "Clock",
             "task_reward": 2,
-            "question": "Was ist das Ergebnis der Multiplikation?",
-            "lama_text": "Tippe die richtige Antwort an!",
+            "lama_text": "Wie viel Uhr ist es?",
             "left_to_solve": 3,
-            "right_answer": "Produkt",
-            "wrong_answers": [
-                "Summe",
-                "Differenz",
-                "Quotient"
-            ]
+            "uhr": "vollStunde",
+            "timer": false
         },
         {
             "task_type": "Zerlegung",
@@ -27,44 +22,22 @@
             "answer_parts": [800 ,50 ,4] 
         },
         {
-            "task_type": "4Cards",
+            "task_type": "Clock",
             "task_reward": 2,
-            "question": "Was ist das Ergebnis der Division?",
-            "lama_text": "Tippe die richtige Antwort an!",
+            "lama_text": "Wie viel Uhr ist es?",
             "left_to_solve": 3,
-            "right_answer": "Quotient",
-            "wrong_answers": [
-                "Summe",
-                "Differenz",
-                "Produkt"
-            ]
+            "uhr": "viertelStunde",
+            "timer": false
         },
         {
-            "task_type": "4Cards",
+            "task_type": "Clock",
             "task_reward": 2,
-            "question": "15/5",
-            "lama_text": "Tippe die richtige Antwort an!",
+            "lama_text": "Wie viel Uhr ist es?",
             "left_to_solve": 3,
-            "right_answer": "3",
-            "wrong_answers": [
-                "5",
-                "10",
-                "20"
-            ]
+            "uhr": "viertelStunde",
+            "timer": false
         },
-        {
-            "task_type": "4Cards",
-            "task_reward": 2,
-            "question": "3*20",
-            "lama_text": "Tippe die richtige Antwort an!",
-            "left_to_solve": 3,
-            "right_answer": "60",
-            "wrong_answers": [
-                "17",
-                "23",
-                "40"
-            ]
-        },
+
         {
             "task_type": "MoneyTask",
             "task_reward": 2,

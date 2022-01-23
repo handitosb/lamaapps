@@ -40,6 +40,38 @@
                 "x",
                 "%"
             ]
-        }
+        },
+        {
+            "task_type": "Equation",
+            "task_reward": 2,
+            "lama_text": "Löse die Gleichung!",
+            "left_to_solve": 4,
+            "random_allowed_operators": [
+              "-"
+            ],
+            "operand_range": [
+              0,
+              10
+            ],
+            "fields_to_replace": 1,
+            "allow_replacing_operators": false,
+            "operator_amount": 1
+          },
+          {
+            "task_type": "Equation",
+            "task_reward": 2,
+            "lama_text": "Löse die Gleichung!",
+            "left_to_solve": 4,
+            "random_allowed_operators": [
+              "+"
+            ],
+            "operand_range": [
+              0,
+              10
+            ],
+            "fields_to_replace": 1,
+            "allow_replacing_operators": false,
+            "operator_amount": 1
+          }
     ]
 }
