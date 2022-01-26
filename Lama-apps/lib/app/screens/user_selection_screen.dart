@@ -92,6 +92,9 @@ class UserSelectionScreenState extends State<UserSelectionScreen> {
   ///
   ///{@param} [User] as user that should be displayed
   Widget _userCard(User user) {
+    print(user.toString());
+    print("123 ID");
+
     ///attache '(Admin)' to the username if the user is an Admin
     String _nameDisplay = user.isAdmin ? user.name + ' (Admin)' : user.name;
     return BlocBuilder<UserSelectionBloc, UserSelectionState>(

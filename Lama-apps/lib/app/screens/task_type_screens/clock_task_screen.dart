@@ -13,7 +13,6 @@ import 'package:lama_app/util/LamaColors.dart';
 import 'package:lama_app/util/LamaTextTheme.dart';
 
 /// Author: H.Bismo
-/// Task Screen for Tasktype "Clock"
 
 class ClockTaskScreen extends StatefulWidget {
   final ClockTest task;

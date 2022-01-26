@@ -36,9 +36,16 @@ class BildFourCardTaskScreen extends StatelessWidget {
         child: Container(
             height: (constraints.maxHeight / 100) * 30,
             child: Align(
-              child: Image.network(task.question,
-                  width: 150,
-                  ),
+              child: task.question ==
+                      "https://i.pinimg.com/originals/8a/ff/34/8aff343f587a9b36d922fde9e6c77960.jpg"
+                  ? Image.asset(
+                      "assets/images/bildCardAsset.jpg",
+                      width: 150,
+                    )
+                  : Image.network(
+                      task.question,
+                      width: 150,
+                    ),
             )),
       ),
       Container(

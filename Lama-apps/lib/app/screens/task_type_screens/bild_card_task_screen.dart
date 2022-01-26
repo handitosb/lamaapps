@@ -39,10 +39,16 @@ class BildCardTaskScreen extends StatelessWidget {
       Container(
           height: (constraints.maxHeight / 100) * 30,
           child: Align(
-            child:  Image.network(
-                task.question,
-                width: 150,
-              ),
+            child: task.question ==
+                    "https://i.pinimg.com/originals/8a/ff/34/8aff343f587a9b36d922fde9e6c77960.jpg"
+                ? Image.asset(
+                    "assets/images/bildCardAsset.jpg",
+                    width: 150,
+                  )
+                : Image.network(
+                    task.question,
+                    width: 150,
+                  ),
             //alignment: Alignment.centerLeft,
           )),
       // Lama Speechbubble
@@ -63,8 +69,8 @@ class BildCardTaskScreen extends StatelessWidget {
                   child: Center(
                     child: Text(
                       task.lamaText,
-                      style:
-                          LamaTextTheme.getStyle(color: LamaColors.black, fontSize: 15),
+                      style: LamaTextTheme.getStyle(
+                          color: LamaColors.black, fontSize: 15),
                     ),
                   ),
                 ),
@@ -108,7 +114,10 @@ class BildCardTaskScreen extends StatelessWidget {
                   child: Center(
                     child: Text(
                       answers[0],
-                      style: LamaTextTheme.getStyle(color: LamaColors.white, fontSize: 30,),
+                      style: LamaTextTheme.getStyle(
+                        color: LamaColors.white,
+                        fontSize: 30,
+                      ),
                     ),
                   ),
                 ),
@@ -132,7 +141,10 @@ class BildCardTaskScreen extends StatelessWidget {
                   child: Center(
                     child: Text(
                       answers[1],
-                      style: LamaTextTheme.getStyle(color: LamaColors.white, fontSize: 30,),
+                      style: LamaTextTheme.getStyle(
+                        color: LamaColors.white,
+                        fontSize: 30,
+                      ),
                     ),
                   ),
                 ),
@@ -156,7 +168,10 @@ class BildCardTaskScreen extends StatelessWidget {
                   child: Center(
                     child: Text(
                       answers[2],
-                      style: LamaTextTheme.getStyle(color: LamaColors.white, fontSize: 30,),
+                      style: LamaTextTheme.getStyle(
+                        color: LamaColors.white,
+                        fontSize: 30,
+                      ),
                     ),
                   ),
                 ),

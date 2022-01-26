@@ -18,12 +18,16 @@
             ]
         },
         {
-            "task_type": "MoneyTask",
+            "task_type": "2Cards",
             "task_reward": 2,
-            "lama_text": "Sammle 2,23€ mit den Münzen zusammen",
+            "question": "8",
+            "lama_text": "Ist die Zahl gerade oder Ungerade?",
             "left_to_solve": 3,
-            "moneyAmount": 2.23
-          },
+            "right_answer": "Gerade",
+            "wrong_answers": [
+                "Ungerade"
+            ]
+        },
         {
             "task_type": "4Cards",
             "task_reward": 2,
@@ -36,38 +40,6 @@
                 "x",
                 "%"
             ]
-        },
-        {
-            "task_type": "Equation",
-            "task_reward": 2,
-            "lama_text": "Löse die Gleichung!",
-            "left_to_solve": 4,
-            "random_allowed_operators": [
-              "-"
-            ],
-            "operand_range": [
-              0,
-              10
-            ],
-            "fields_to_replace": 1,
-            "allow_replacing_operators": false,
-            "operator_amount": 1
-          },
-          {
-            "task_type": "Equation",
-            "task_reward": 2,
-            "lama_text": "Löse die Gleichung!",
-            "left_to_solve": 4,
-            "random_allowed_operators": [
-              "+"
-            ],
-            "operand_range": [
-              0,
-              10
-            ],
-            "fields_to_replace": 1,
-            "allow_replacing_operators": false,
-            "operator_amount": 1
-          }
+        }
     ]
 }

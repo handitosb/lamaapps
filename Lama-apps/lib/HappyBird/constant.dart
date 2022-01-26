@@ -1,1 +1,1 @@
-const storedPasscode = '4938';
+const storedPasscode = '1234';

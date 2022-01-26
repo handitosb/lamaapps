@@ -41,6 +41,8 @@ class UserSelectionBloc extends Bloc<UserSelectionEvent, UserSelectionState> {
   ///{@return}[UsersLoaded] with all loaded [User]
   Future<UsersLoaded> loadUsers() async {
     List<User> userList = await DatabaseProvider.db.getUser();
+    print("ALL USERS GET CALLED IN __ User_selection_block: loadUsers()");
+    print(userList);
     return UsersLoaded(userList);
   }
 

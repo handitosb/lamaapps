@@ -18,8 +18,8 @@ class Screen_start extends StatelessWidget {
   Widget build(BuildContext context){
     return Center(
       child: Container (
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.99,
+          width: MediaQuery.of(context).size.width * 0.99,
           child: Card(
             margin: EdgeInsets.symmetric(
                 horizontal: 25.0,

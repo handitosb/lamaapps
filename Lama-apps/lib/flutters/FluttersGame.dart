@@ -160,7 +160,7 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
           _gameOver("Game Over");
 
         }else{
-          _gameOver("\nGame Over.\nAufgepasst! Du kannst jetzt HappyBird freischalten.\nPIN: 4938\n");
+          _gameOver("\nGame Over.\nAufgepasst! Du kannst jetzt HappyBird freischalten.\nPIN: 1234\n");
         }
       }
 

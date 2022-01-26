@@ -111,7 +111,6 @@ class TasksetLoader {
   Future<void> buildTasksetFromJson(tasksetContent) async {
     String isTasksetValid =
         TasksetValidator.isValidTaskset(jsonDecode(tasksetContent));
-    print('Is Taskset valid: $isTasksetValid');
     if (isTasksetValid == null) {
       Taskset taskset = Taskset.fromJson(jsonDecode(tasksetContent));
 
@@ -136,12 +135,12 @@ class TasksetLoader {
         loadedTasksets[sgr].add(taskset);
       else
         loadedTasksets[sgr] = <Taskset>[taskset];
-      print("Loaded Taskset: " +
-          taskset.name +
-          " for grade " +
-          taskset.grade.toString() +
-          " for subject " +
-          taskset.subject);
+      // print("Loaded Taskset: " +
+      //     taskset.name +
+      //     " for grade " +
+      //     taskset.grade.toString() +
+      //     " for subject " +
+      //     taskset.subject);
     }
   }
 

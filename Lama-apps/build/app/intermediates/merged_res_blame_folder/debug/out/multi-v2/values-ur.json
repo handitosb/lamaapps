@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\Git\\Git\\lamaapps\\Lama-apps\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ur\\values-ur.xml",
+            "outputFile": "/Users/tufantopcu/Desktop/lama_appsss/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ur/values-ur.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\handi\\.gradle\\caches\\transforms-2\\files-2.1\\2b9563c72730edaf6809dab45e4e4475\\core-1.8.0-alpha02\\res\\values-ur\\values-ur.xml",
+                    "source": "/Users/tufantopcu/.gradle/caches/transforms-2/files-2.1/1b2210cc45d3f8f3cc3f2567d3560f26/core-1.8.0-alpha03/res/values-ur/values-ur.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

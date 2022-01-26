@@ -31,7 +31,8 @@ class User {
   bool highscorePermission;
 
   User(
-      {this.name,
+      {this.id,
+      this.name,
       this.password,
       this.grade,
       this.coins,
@@ -44,6 +45,7 @@ class User {
   ///{@return} Map<String, dynamic>
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
+      UserFields.columnId: id,
       UserFields.columnName: name,
       UserFields.columnPassword: password,
       UserFields.columnGrade: grade,
@@ -71,11 +73,11 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     bool isAdmin =
-        json.containsKey('isAdmin') && json['isAdmin'] == 'ja' ? true : false;
+        json.containsKey('isAdmin') && json['isAdmin'] == 1 ? true : false;
     String avatar = isAdmin ? 'admin' : 'lama';
     int coins = json.containsKey('coins') ? json['coins'] : 0;
     bool highscorePermission =
-        json.containsKey('isAdmin') && json['highscorePermission'] == 'ja'
+        json.containsKey('isAdmin') && json['highscorePermission'] == 1
             ? true
             : false;
 
@@ -83,6 +85,7 @@ class User {
       name: json['name'],
       password: json['password'],
       grade: json['grade'],
+      id: json['id'],
       coins: coins,
       isAdmin: isAdmin,
       avatar: avatar,

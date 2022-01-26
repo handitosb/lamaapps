@@ -1,11 +1,10 @@
-
 //set table name
 final String tableAchievements = "achievement";
 
 ///Set the column names
 ///
 /// Author: F.Brecher
-class AchievementsFields{
+class AchievementsFields {
   static final String columnAchievementsId = "id";
   static final String columnAchievementsName = "name";
 }
@@ -35,5 +34,28 @@ class Achievement {
   Achievement.fromMap(Map<String, dynamic> map) {
     id = map[AchievementsFields.columnAchievementsId];
     name = map[AchievementsFields.columnAchievementsName];
+  }
+}
+
+class AchievementList {
+  List<Achievement> achivments;
+  AchievementList(this.achivments);
+
+  AchievementList.fromJson(Map<String, dynamic> json) {
+    if (json['achievementList'] != null) {
+      achivments = <Achievement>[];
+      json['achievementList'].forEach((v) {
+        achivments.add(new Achievement.fromMap(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+
+    if (this.achivments != null) {
+      data['achievementList'] = this.achivments.map((v) => v.toMap()).toList();
+    }
+    return data;
   }
 }

@@ -21,7 +21,12 @@ import 'package:lama_app/util/input_validation.dart';
 class CreateAdminBloc extends Bloc<CreateAdminEvent, CreateAdminState> {
   ///[User] that is inserted in to the Database later on
   ///incoming events are used to change the values of this [User]
-  User _user = User(grade: 1, coins: 0, isAdmin: true, avatar: 'admin');
+  User _user = User(
+    grade: 1,
+    coins: 0,
+    isAdmin: true,
+    avatar: 'admin',
+  );
   SaftyQuestion _saftyQuestion = SaftyQuestion();
 
   CreateAdminBloc({CreateAdminState initialState}) : super(initialState);

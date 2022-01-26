@@ -1,11 +1,10 @@
-
 //set table name
 final String tableHighscore = "highscore";
 
 ///Set the column names
 ///
 /// Author: F.Brecher
-class HighscoresFields{
+class HighscoresFields {
   static final String columnId = "id";
   static final String columnGameId = "gameid";
   static final String columnScore = "score";
@@ -43,5 +42,28 @@ class Highscore {
     gameID = map[HighscoresFields.columnGameId];
     score = map[HighscoresFields.columnScore];
     userID = map[HighscoresFields.columnUserId];
+  }
+}
+
+class HighscoreList {
+  List<Highscore> highScore;
+  HighscoreList(this.highScore);
+
+  HighscoreList.fromJson(Map<String, dynamic> json) {
+    if (json['highscore'] != null) {
+      highScore = <Highscore>[];
+      json['highscore'].forEach((v) {
+        highScore.add(new Highscore.fromMap(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+
+    if (this.highScore != null) {
+      data['highscore'] = this.highScore.map((v) => v.toMap()).toList();
+    }
+    return data;
   }
 }

@@ -1,13 +1,21 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive/hive.dart';
 import 'package:lama_app/app/app.dart';
 import 'package:lama_app/app/repository/taskset_repository.dart';
 
 ///Main method that launches the app.
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (kIsWeb) {
+    await Hive.openBox('database');
+    print("WEB Enabled: => Hive Initiated");
+  }
   TasksetRepository tasksetRepository = TasksetRepository();
   tasksetRepository.initialize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

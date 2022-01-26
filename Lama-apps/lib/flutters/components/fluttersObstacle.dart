@@ -15,7 +15,7 @@ class FluttersObstacle extends SpriteComponent {
       sprite.renderRect(
           c,
           Rect.fromLTWH(x, y, width, height),
-          overridePaint: Paint()..color = hit ? Colors.white.withOpacity(1.0) : Colors.white.withOpacity(opacity)
+          overridePaint: Paint()..color = hit ? Colors.white.withOpacity(0.7) : Colors.white.withOpacity(opacity)
       );
     } else {
       super.render(c);

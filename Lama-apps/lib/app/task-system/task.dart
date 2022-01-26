@@ -266,7 +266,7 @@ class TaskClozeTest extends Task {
 }
 
 ///Subclass of [Task] for the Tasktype "2Cards"
-/// This is only a test, please do not write this task to JSON 
+///
 ///Author: H.Bismo
 class Task2Cards extends Task {
   String question;
@@ -356,9 +356,7 @@ class TaskMarkWords extends Task {
     return s;
   }
 }
-///Subclass of [Task] for the Tasktype "Clock"
-/// 
-///Author: H.Bismo
+
 class ClockTest extends Task {
   String uhr;
   bool timer;
@@ -414,7 +412,7 @@ class TaskMatchCategory extends Task {
 }
 
 ///Subclass of [Task] for the Tasktype "MatchRandom"
-/// This is only a test, please do not write this task to JSON
+///
 ///Author: H.Bismo
 class TaskMatchRandom extends Task {
   List<String> ansLeft;
@@ -611,10 +609,10 @@ class TaskEquation extends Task {
       this.operatorAmount,
       this.fieldsToReplace)
       : super(taskType, reward, lamaText, leftToSolve) {
-    print("meep");
-    print(this.randomAllowedOperators);
-    print("meep2");
-    print(this.operandRange);
+    // print("meep");
+    // print(this.randomAllowedOperators);
+    // print("meep2");
+    // print(this.operandRange);
     if (this.operandRange.length > 0) isRandom = true;
   }
 
