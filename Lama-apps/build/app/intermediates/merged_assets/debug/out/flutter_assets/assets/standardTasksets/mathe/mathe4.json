@@ -19,7 +19,7 @@
             "left_to_solve": 3,
             "reverse": false,
             "right_answer": 854,
-            "answer_parts": [800 ,50 ,4]
+            "answer_parts": [800 ,50 ,4] 
         },
         {
             "task_type": "Clock",
@@ -96,14 +96,14 @@
             "lama_text": "Löse die Gleichung!",
             "left_to_solve": 4,
             "random_allowed_operators": [
-                "+", "-"
+              "+", "-"
             ],
             "operand_range": [
-                0,
-                20
+              0,
+              20
             ],
             "fields_to_replace": 2,
             "allow_replacing_operators": false
-        }
+          }
     ]
 }
