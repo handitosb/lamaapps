@@ -11,33 +11,33 @@
       "left_to_solve": 3,
       "uhr": "vollStunde",
       "timer": false
-    },
-    {
-      "task_type": "Clock",
-      "task_reward": 2,
-      "lama_text": "Wie viel Uhr ist es?",
-      "left_to_solve": 3,
-      "uhr": "halbeStunde",
-      "timer": false
-    },
-    {
-      "task_type": "Zerlegung",
-      "task_reward": 2,
-      "lama_text": " zerlegt die Zahlen!",
-      "left_to_solve": 3,
-      "reverse": true,
-      "right_answer": 721,
-      "answer_parts": [700 ,20 ,1]
-    },
-    {
-      "task_type": "Zerlegung",
-      "task_reward": 2,
-      "lama_text": " zerlegt die Zahlen!",
-      "left_to_solve": 3,
-      "reverse": false,
-      "right_answer": 425,
-      "answer_parts": [400 ,20 ,5]
-    },
+  },
+  {
+    "task_type": "Clock",
+    "task_reward": 2,
+    "lama_text": "Wie viel Uhr ist es?",
+    "left_to_solve": 3,
+    "uhr": "halbeStunde",
+    "timer": false
+},
+{
+  "task_type": "Zerlegung",
+  "task_reward": 2,
+  "lama_text": " zerlegt die Zahlen!",
+  "left_to_solve": 3,
+  "reverse": true,
+  "right_answer": 721,
+  "answer_parts": [700 ,20 ,1] 
+},
+{
+  "task_type": "Zerlegung",
+  "task_reward": 2,
+  "lama_text": " zerlegt die Zahlen!",
+  "left_to_solve": 3,
+  "reverse": false,
+  "right_answer": 425,
+  "answer_parts": [400 ,20 ,5] 
+},
     {
       "task_type": "MoneyTask",
       "task_reward": 2,

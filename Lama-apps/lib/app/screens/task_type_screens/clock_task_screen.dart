@@ -470,7 +470,7 @@ class ClockPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     var clockCenter = Paint()..color = Color(0xFFEAECFF);
-
+  
     var minClock = Paint()
       ..shader =
           RadialGradient(colors: [Colors.lightBlue, Colors.blueAccent[700]])
@@ -481,6 +481,20 @@ class ClockPainter extends CustomPainter {
 
     var hourClock = Paint()
       ..shader = RadialGradient(colors: [Color(0xFFEA74AB), Color(0xFFC279FB)])
+          .createShader(Rect.fromCircle(center: center, radius: rad))
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 16;
+      var minClock1 = Paint()
+      ..shader =
+          RadialGradient(colors: [Colors.indigo[600], Colors.blueAccent[700]])
+              .createShader(Rect.fromCircle(center: center, radius: rad))
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 10;
+
+    var hourClock1 = Paint()
+      ..shader = RadialGradient(colors: [Colors.indigo[600], Colors.blueAccent[700]])
           .createShader(Rect.fromCircle(center: center, radius: rad))
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
@@ -544,8 +558,8 @@ class ClockPainter extends CustomPainter {
             var minClockY = Y + 80 * sin(90 * pi / 180);
             var hourClockX = X + 60 * cos((i * 30 + 285) * pi / 180);
             var hourClockY = Y + 60 * sin((i * 30 + 285) * pi / 180);
-            canvas.drawLine(center, Offset(minClockX, minClockY), minClock);
-            canvas.drawLine(center, Offset(hourClockX, hourClockY), hourClock);
+            canvas.drawLine(center, Offset(minClockX, minClockY), minClock1);
+            canvas.drawLine(center, Offset(hourClockX, hourClockY), hourClock1);
             print(randStunde.toString() + ":" + randMinute.toString());
           }
         } else if (vierMinute == 15) {
@@ -555,9 +569,9 @@ class ClockPainter extends CustomPainter {
               var minClockY = Y + 80 * sin(360 * pi / 180);
               var hourClockX = X + 60 * cos((i * 30 + 278) * pi / 180);
               var hourClockY = Y + 60 * sin((i * 30 + 278) * pi / 180);
-              canvas.drawLine(center, Offset(minClockX, minClockY), minClock);
+              canvas.drawLine(center, Offset(minClockX, minClockY), minClock1);
               canvas.drawLine(
-                  center, Offset(hourClockX, hourClockY), hourClock);
+                  center, Offset(hourClockX, hourClockY), hourClock1);
               print(randStunde.toString() + ":" + randMinute.toString());
             }
           }
@@ -568,9 +582,9 @@ class ClockPainter extends CustomPainter {
               var minClockY = Y + 80 * sin(180 * pi / 180);
               var hourClockX = X + 60 * cos((i * 30 + 293) * pi / 180);
               var hourClockY = Y + 60 * sin((i * 30 + 293) * pi / 180);
-              canvas.drawLine(center, Offset(minClockX, minClockY), minClock);
+              canvas.drawLine(center, Offset(minClockX, minClockY), minClock1);
               canvas.drawLine(
-                  center, Offset(hourClockX, hourClockY), hourClock);
+                  center, Offset(hourClockX, hourClockY), hourClock1);
               print(randStunde.toString() + ":" + randMinute.toString());
             }
           }
@@ -581,9 +595,9 @@ class ClockPainter extends CustomPainter {
               var minClockY = Y + 80 * sin(270 * pi / 180);
               var hourClockX = X + 60 * cos((i * 30 + 270) * pi / 180);
               var hourClockY = Y + 60 * sin((i * 30 + 270) * pi / 180);
-              canvas.drawLine(center, Offset(minClockX, minClockY), minClock);
+              canvas.drawLine(center, Offset(minClockX, minClockY), minClock1);
               canvas.drawLine(
-                  center, Offset(hourClockX, hourClockY), hourClock);
+                  center, Offset(hourClockX, hourClockY), hourClock1);
               print(randStunde.toString() + ":" + randMinute.toString());
             }
           }
