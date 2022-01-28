@@ -21,7 +21,7 @@ import 'package:lama_app/flutters/components/Obstacle.dart';
 import '../app/screens/game_list_screen.dart';
 import 'package:lama_app/flutters/widgets/fluttersEndscreenWidget.dart';
 
-
+import 'package:lama_app/HappyBird/constant.dart';
 
 
 /// This class represents the flybird game and its components.
@@ -153,19 +153,23 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
   /// This method checks if the bird collides with the collision cloud.
   void _checkCollision() {
 
-      if (_bird.isLeft == _obstacle.isLeft) {
-        _obstacle.highlightCollisionCloud();
 
-        if (score <= 199){
-          _gameOver("Game Over");
+    if (_bird.isLeft == _obstacle.isLeft) {
+      _obstacle.highlightCollisionCloud();
 
-        }else{
-          _gameOver("\nGame Over.\nAufgepasst! Du kannst jetzt HappyBird freischalten.\nPIN: 1234\n");
-        }
+      if (score <= 199){
+        _gameOver("Game Over", (''));
+
+      }else{
+        _gameOver("Game Over.\nAufgepasst! Du kannst jetzt HappyBird freischalten.\nPIN:", element);
+
+
       }
+    }
 
 
   }
+
 
   /// This method initialize the components and removes the start widget.
   void _startGame() {
@@ -247,7 +251,7 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
   ///
   /// sideffects:
   ///   adds [FluttersEndscreenWidget] widget
-  void _gameOver(String endText) {
+  void _gameOver(String endText, String pin) {
 
     _running = false;
     pauseEngine();
@@ -258,8 +262,10 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
         endScreenWidgetName,
         FluttersEndscreenWidget(
           text: endText,
+          pin: pin,
           score: score,
           onQuitPressed: _quit,
+
 
         ));
 

@@ -224,7 +224,7 @@ class _DemoPageState extends State<DemoPage> {
   }
 
   _passcodeEntered(String enteredPasscode) {
-    bool isValid = storedPasscode == enteredPasscode;
+    bool isValid = element == enteredPasscode;
     _verificationNotifier.add(isValid);
     if (isValid) {
       setState(() {
