@@ -359,7 +359,7 @@ class _AdminMenuScreenState extends State<AdminMenuScreen> {
               ),
             ),
             Text(
-              "Kevin Binder (Leitung)\nLars Kammerer\nFranz Leonhardt\nTobias Rentsch\nFabian Brescher",
+              "Kevin Binder (Leitung)\nLars Kammerer\nFranz Leonhardt\nTobias Rentsch\nFabian Brecher",
               style: LamaTextTheme.getStyle(
                 color: LamaColors.black,
                 fontSize: 16,

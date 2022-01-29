@@ -9,10 +9,11 @@ import '../../../util/LamaColors.dart';
 import '../../../util/LamaTextTheme.dart';
 import '../../task-system/task.dart';
 
+// Author J.Decher
+
 class NumberLineTaskScreen extends StatefulWidget {
   final TaskNumberLine task;
   final BoxConstraints constraints;
-  int testrng;
   NumberLineTaskScreen(this.task, this.constraints);
 
   @override
@@ -37,13 +38,16 @@ class NumberLineState extends State<NumberLineTaskScreen> {
   bool tappedCorrectly = false;
   bool tappedIncorrectly = false;
   TapDownDetails details;
+  //double rating = 40; for Slider
   NumberLineState(this.task, this.constraints) {
-    this.endPixel = 370;
     this.rngStart = task.range[0];
     this.rngEnd = task.range[1];
+
     if (task.randomrange) {
-      this.rngStart = random.nextInt(task.range[1] ~/ 2);
-      this.rngEnd = random.nextInt(task.range[1] ~/ 2) + task.range[1] ~/ 2;
+      int temp = rngEnd - rngStart;
+      this.rngStart = random.nextInt(temp ~/ 2) + task.range[0];
+      this.rngEnd =
+          random.nextInt(temp ~/ 2) + (task.range[0] + task.range[1]) ~/ 2 + 1;
     }
     if (task.steps > 0) {
       rngStart = ((rngStart.toDouble() / task.steps).round() * task.steps);
@@ -51,11 +55,16 @@ class NumberLineState extends State<NumberLineTaskScreen> {
     }
 
     this.gesuchteZahl = random.nextInt(rngEnd - rngStart) + rngStart;
+
     if (task.steps > 0) {
       gesuchteZahl =
           ((gesuchteZahl.toDouble() / task.steps).round() * task.steps);
     }
     while (this.gesuchteZahl == rngStart || this.gesuchteZahl == rngEnd) {
+      if (task.randomrange) {
+        rngStart = random.nextInt((rngEnd - rngStart) ~/ 2) + task.range[0];
+        rngStart = ((rngStart.toDouble() / task.steps).round() * task.steps);
+      }
       this.gesuchteZahl = random.nextInt(rngEnd - rngStart) + rngStart;
       if (task.steps > 0) {
         gesuchteZahl =
@@ -63,8 +72,6 @@ class NumberLineState extends State<NumberLineTaskScreen> {
       }
     }
     this.dgesuchteZahl = gesuchteZahl.toDouble();
-    this.dgesuchterPixel =
-        (endPixel / (rngEnd - rngStart)) * (dgesuchteZahl - rngStart);
     this.firstTry = true;
   }
 
@@ -73,31 +80,45 @@ class NumberLineState extends State<NumberLineTaskScreen> {
     bool paintRed = !task.ontap;
     double screenwidth = MediaQuery.of(context).size.width;
     double screenheight = MediaQuery.of(context).size.height;
+    endPixel = screenwidth.toInt();
+    double frame = endPixel / 10;
+    endPixel = endPixel - frame.toInt();
+    dgesuchterPixel =
+        (endPixel / (rngEnd - rngStart)) * (dgesuchteZahl - rngStart);
+    int diff = rngEnd - rngStart;
+    // If user has to enter the number in a text field
     if (!task.ontap) {
       return Column(children: [
         SizedBox(height: 20),
         lamaHead(context, task, constraints, task.ontap),
         SizedBox(height: 50),
-        numberLine(context, rngStart, rngEnd, endPixel),
+
+        // Shows correct answer on screen
+        // buildText(context, dgesuchteZahl.toInt(), 100),
+
+        // Start and end of number line as text
+        numbers(context, rngStart, rngEnd, endPixel),
         Align(
           alignment: Alignment.topCenter,
         ),
         Padding(
           padding: EdgeInsets.all(2),
+          // Numberline
           child: Container(
             width: screenwidth - screenwidth / 10,
-            height: 30,
+            height: screenheight / 25,
             child: CustomPaint(
               foregroundPainter: LinePainter(
-                  dgesuchterPixel, endPixel, paintRed, rngStart, rngEnd),
+                  dgesuchterPixel, endPixel, paintRed, rngStart, rngEnd, diff),
             ),
           ),
         ),
         SizedBox(height: 50),
-        keyboard(context, controller, rngEnd),
+        keyboard(context, controller, dgesuchteZahl.toInt()),
         SizedBox(height: 50),
         fertigButton(context, constraints, controller, dgesuchteZahl),
       ]);
+      // If user has to tap the correct area
     } else {
       return Column(children: [
         SizedBox(height: 20),
@@ -108,50 +129,57 @@ class NumberLineState extends State<NumberLineTaskScreen> {
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
         Container(
-          height: 20,
-          width: MediaQuery.of(context).size.width,
-          child: numberLine(context, rngStart, rngEnd, endPixel),
+          height: screenheight / 25,
+          width: screenwidth,
+          child: numbers(context, rngStart, rngEnd, endPixel),
         ),
+        // Stack for correct/incorrect areas, icons and number line
         Stack(
           children: [
             Container(
-              alignment: Alignment.center,
+              height: screenheight / 25 + 20,
               child: Container(
-                width: screenwidth - screenwidth / 10,
-                height: 30,
-                child: CustomPaint(
-                  foregroundPainter: LinePainter(
-                      dgesuchterPixel, endPixel, paintRed, rngStart, rngEnd),
+                alignment: Alignment.center,
+                child: Container(
+                  height: screenheight / 25,
+                  width: screenwidth - screenwidth / 10,
+                  child: CustomPaint(
+                    foregroundPainter: LinePainter(dgesuchterPixel, endPixel,
+                        paintRed, rngStart, rngEnd, diff),
+                  ),
                 ),
               ),
             ),
-            //icon correct
+
+            //Icon correct
             Positioned(
+              top: 10,
               left: dgesuchterPixel + screenwidth / 60,
               child: Container(
-                width: 30,
-                height: 30,
+                width: screenwidth / 15,
+                height: screenheight / 25,
                 child: Icon(Icons.check_circle,
-                    size: 30,
+                    size: screenwidth / 15,
                     color: tappedCorrectly
                         ? Colors.green
                         : Colors.white.withOpacity(0)),
               ),
             ),
-            //icon incorrect
+            //Icon incorrect
             Positioned(
+              top: 10,
               left: dgesuchterPixel + screenwidth / 60,
               child: Container(
-                width: 30,
-                height: 30,
+                width: screenwidth / 15,
+                height: screenheight / 25,
                 child: Icon(Icons.cancel,
-                    size: 30,
+                    size: screenwidth / 15,
                     color: tappedIncorrectly
                         ? Colors.red
                         : Colors.white.withOpacity(0)),
               ),
             ),
-            //correct area
+            //Correct area
             Positioned(
               left: dgesuchterPixel,
               child: GestureDetector(
@@ -164,33 +192,35 @@ class NumberLineState extends State<NumberLineTaskScreen> {
                   });
                 },
                 child: Container(
-                  width: 40,
-                  height: 30,
+                  width: screenwidth / 10,
+                  height: screenheight / 25 + 20,
                   decoration: BoxDecoration(color: Colors.green.withOpacity(0)),
                 ),
               ),
             ),
-            //incorrect area to the left
+            //Incorrect area to the left
             Positioned(
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    if (firstTry) {
-                      tappedIncorrectly = !tappedIncorrectly;
-                      firstTry = false;
-                    }
-                  });
-                },
-                child: Container(
-                  width: dgesuchterPixel,
-                  height: 30,
-                  decoration: BoxDecoration(color: Colors.red.withOpacity(0)),
+              child: Container(
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (firstTry) {
+                        tappedIncorrectly = !tappedIncorrectly;
+                        firstTry = false;
+                      }
+                    });
+                  },
+                  child: Container(
+                    width: dgesuchterPixel,
+                    height: screenheight / 25 + 20,
+                    decoration: BoxDecoration(color: Colors.red.withOpacity(0)),
+                  ),
                 ),
               ),
             ),
-            //incorrect area to the right
+            //Incorrect area to the right
             Positioned(
-              left: dgesuchterPixel + 40,
+              left: dgesuchterPixel + screenwidth / 10,
               child: GestureDetector(
                 onTap: () {
                   setState(() {
@@ -202,11 +232,23 @@ class NumberLineState extends State<NumberLineTaskScreen> {
                 },
                 child: Container(
                   width: screenwidth,
-                  height: 30,
+                  height: screenheight / 25 + 20,
                   decoration: BoxDecoration(color: Colors.red.withOpacity(0)),
                 ),
               ),
             ),
+            // // Another option for the user to give their input. Still needs controller and 'value' needs to be fixed.
+            // Slider(
+            //     value: rating,
+            //     min: rngStart.toDouble(),
+            //     max: rngEnd.toDouble(),
+            //     divisions: diff ~/ task.steps,
+            //     //label: rating.toString(),
+            //     onChanged: (double newRating) {
+            //       setState(() {
+            //         rating = newRating;
+            //       });
+            //     }),
           ],
         ),
         SizedBox(height: 50),
@@ -226,13 +268,13 @@ class LinePainter extends CustomPainter {
   int rngStart;
   int rngEnd;
   int diff;
-  LinePainter(dgesuchterPixel, endPixel, paintRed, rngStart, rngEnd) {
+  LinePainter(dgesuchterPixel, endPixel, paintRed, rngStart, rngEnd, diff) {
     this.dgesuchterPixel = dgesuchterPixel;
     this.endPixel = endPixel;
     this.paintRed = paintRed;
     this.rngStart = rngStart;
     this.rngEnd = rngEnd;
-    diff = rngEnd - rngStart;
+    this.diff = diff;
   }
   @override
   void paint(Canvas canvas, Size size) {
@@ -244,7 +286,6 @@ class LinePainter extends CustomPainter {
       ..color = Colors.red
       ..strokeCap = StrokeCap.round
       ..strokeWidth = 3;
-    ;
     //Hauptteil des Zahlenstrahls
     canvas.drawLine(
       Offset(endPixel.toDouble() * 0, size.height * 0.5),
@@ -263,10 +304,20 @@ class LinePainter extends CustomPainter {
       Offset(size.width * 1, size.height * 0.5),
       paint,
     );*/
+
     //Unterteilung des Zahlenstrahls
-    if (diff <= 100 && diff % 10 == 0) {
+
+    for (int i = diff.toString().length - 1; i > 1; i--) {
+      if (diff > 100 && diff.toString()[i] == "0" && rngStart > 0) {
+        diff = diff ~/ 10;
+      }
+    }
+    if (diff <= 100 && diff != 10 && diff % 10 == 0) {
       for (int i = 0; i <= diff / 10; i++) {
-        if (i == 0 || i == diff || diff % 2 == 0 && i == diff / 10 / 2) {
+        if (i == 0 ||
+            i == diff ||
+            diff % 2 == 0 && i == diff / 10 / 2 ||
+            i == diff / 10) {
           canvas.drawLine(
             Offset(endPixel * i / (diff / 10), size.height * 0.1),
             Offset(endPixel * i / (diff / 10), size.height * 0.9),
@@ -279,9 +330,12 @@ class LinePainter extends CustomPainter {
           paint,
         );
       }
-    } else if (diff <= 100 && diff % 5 == 0) {
+    } else if (diff <= 100 && diff != 10 && diff % 5 == 0) {
       for (int i = 0; i <= diff / 5; i++) {
-        if (i == 0 || i == diff || diff % 2 == 0 && i == diff / 5 / 2) {
+        if (i == 0 ||
+            i == diff ||
+            diff % 2 == 0 && i == diff / 5 / 2 ||
+            i == diff / 5) {
           canvas.drawLine(
             Offset(endPixel * i / (diff / 5), size.height * 0.1),
             Offset(endPixel * i / (diff / 5), size.height * 0.9),
@@ -325,18 +379,6 @@ class LinePainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
-Widget buildText(BuildContext context, int rng, double pixel) {
-  return Positioned(
-    left: pixel,
-    child: Container(
-      child: Text(
-        rng.toString(),
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-      ),
-    ),
-  );
-}
-
 Widget lamaHead(
     BuildContext context, Task task, BoxConstraints constraints, bool onTap) {
   return Container(
@@ -374,29 +416,39 @@ Widget lamaHead(
   );
 }
 
-Widget numberLine(
-    BuildContext context, int rngStart, int rngEnd, int endPixel) {
+Widget numbers(BuildContext context, int rngStart, int rngEnd, int endPixel) {
   return Container(
+    margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width / 40, 0,
+        MediaQuery.of(context).size.width / 100, 0),
     height: 20,
-    width: MediaQuery.of(context).size.width,
-    child: Stack(
+    child: Row(
       children: [
         buildText(context, rngStart, 20),
-        buildText(context, rngEnd, endPixel.toDouble() + 12),
-        //  buildText(context, rngPixelAsValue, dresultPixel + 12),
+        Expanded(child: Container()),
+        buildText(context, rngEnd, endPixel.toDouble()),
       ],
     ),
   );
 }
 
+Widget buildText(BuildContext context, int rng, double pixel) {
+  return Text(
+    rng.toString(),
+    style: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}
+
 Widget keyboard(
-    BuildContext context, TextEditingController controller, int rngEnd) {
+    BuildContext context, TextEditingController controller, int gesuchteZahl) {
   return Container(
     width: 100,
     height: 50,
     child: TextField(
       controller: controller,
-      maxLength: rngEnd.toString().length,
+      maxLength: gesuchteZahl.toString().length,
       keyboardType: TextInputType.number,
       style: TextStyle(fontSize: 30),
       decoration: InputDecoration(
