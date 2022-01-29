@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lama_app/util/LamaColors.dart';
 
+
 /// This class is a [StatelessWidget] for displaying the game over Mode of Flybird
 class FluttersEndscreenWidget extends StatelessWidget {
   /// Score to display on game over menu.
   final String text;
 
+  final String pin;
   /// score to display
   final int score;
   /// highscore of the current user in the current game
@@ -16,15 +18,19 @@ class FluttersEndscreenWidget extends StatelessWidget {
   // This function will be called when quit button is pressed.
   final Function onQuitPressed;
 
+
   const FluttersEndscreenWidget({
     Key key,
     this.text,
+    this.pin,
     this.userHighScore, this.alltimeHighScore,
 
     @required this.score,
     @required this.onQuitPressed,
+
   })  : assert(score != null),
         assert(onQuitPressed != null),
+
         super(key: key);
 
   @override
@@ -61,6 +67,28 @@ class FluttersEndscreenWidget extends StatelessWidget {
                         ),
                       ],
                       fontSize: 25.0,
+                      color: LamaColors.white,
+                      fontStyle: FontStyle.normal,
+                      decoration: TextDecoration.none),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 0,
+                  vertical: 10,
+                ),
+                child: Text(
+                  pin,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      shadows: [
+                        Shadow(
+                            color: LamaColors.black.withOpacity(0.3),
+                            offset: Offset(2,2)
+                        ),
+                      ],
+                      fontSize: 35.0,
                       color: LamaColors.white,
                       fontStyle: FontStyle.normal,
                       decoration: TextDecoration.none),
@@ -103,6 +131,7 @@ class FluttersEndscreenWidget extends StatelessWidget {
                       onQuitPressed.call();
                     },
                   ),
+
                 ],
               )
             ],

@@ -10,6 +10,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'package:lama_app/HappyBird/constant.dart';
+
 import 'package:lama_app/flutters/components/bird.dart';
 import 'package:lama_app/flutters/widgets/PlayPauseModeWidget.dart';
 import 'package:lama_app/flutters/widgets/fluttersScoreWidget.dart';
@@ -21,7 +23,6 @@ import 'package:lama_app/flutters/components/Obstacle.dart';
 import '../app/screens/game_list_screen.dart';
 import 'package:lama_app/flutters/widgets/fluttersEndscreenWidget.dart';
 
-import 'package:lama_app/HappyBird/constant.dart';
 
 
 /// This class represents the flybird game and its components.
@@ -107,6 +108,8 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
 
 
 
+
+
   /// This method load the [Size] of the screen, highscore and loads the StartScreen
   void initialize() async {
     resize(await Flame.util.initialDimensions());
@@ -150,26 +153,44 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
         scoreWidgetName, FluttersScoreWidget(text: score.toString()));
   }
 
+
+
+
   /// This method checks if the bird collides with the collision cloud.
   void _checkCollision() {
 
 
-    if (_bird.isLeft == _obstacle.isLeft) {
-      _obstacle.highlightCollisionCloud();
+      if (_bird.isLeft == _obstacle.isLeft) {
+        _obstacle.highlightCollisionCloud();
 
-      if (score <= 199){
-        _gameOver("Game Over", (''));
+        if (score <= 199){
+          _gameOver("Game Over", (''));
 
-      }else{
-        _gameOver("Game Over.\nAufgepasst! Du kannst jetzt HappyBird freischalten.\nPIN:", element);
+        }else{
+          _gameOver("Game Over.\nAufgepasst! Du kannst jetzt HappyBird freischalten.\nPIN:", element);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
       }
-    }
 
 
   }
-
 
   /// This method initialize the components and removes the start widget.
   void _startGame() {
@@ -328,4 +349,6 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
           : FlySide.Right);
     }
   }
+
+
 }
