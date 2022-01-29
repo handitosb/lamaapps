@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
 import 'package:lama_app/app/app.dart';
 import 'package:lama_app/app/repository/taskset_repository.dart';
+import 'package:path_provider/path_provider.dart';
 
 ///Main method that launches the app.
 void main() async {
@@ -15,6 +14,10 @@ void main() async {
   if (kIsWeb) {
     await Hive.openBox('database');
     print("WEB Enabled: => Hive Initiated");
+  } else {
+    Hive.init((await getApplicationDocumentsDirectory()).path);
+    await Hive.openBox('database');
+    print("Mobile Enabled: => Hive Initiated");
   }
   TasksetRepository tasksetRepository = TasksetRepository();
   tasksetRepository.initialize();

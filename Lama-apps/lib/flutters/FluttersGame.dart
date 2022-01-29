@@ -262,7 +262,8 @@ class FluttersGame extends BaseGame with TapDetector, HasWidgetsOverlay {
         endScreenWidgetName,
         FluttersEndscreenWidget(
           text: endText,
-          pin: pin,
+          //TODO: I have commented this because attribute "pin" wasn't present in the parent class "FlutterEndScreenWidget"
+          // pin: pin,
           score: score,
           onQuitPressed: _quit,
 

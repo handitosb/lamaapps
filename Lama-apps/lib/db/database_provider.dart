@@ -225,7 +225,7 @@ class DatabaseProvider {
       final db = await database;
 
       var userHasAchievements =
-      await db.query(tableUserHasAchievements, columns: [
+          await db.query(tableUserHasAchievements, columns: [
         UserHasAchievementsFields.columnUserId,
         UserHasAchievementsFields.columnAchievementId
       ]);
@@ -234,7 +234,7 @@ class DatabaseProvider {
 
       userHasAchievements.forEach((currentAchievement) {
         UserHasAchievement userHasAchievement =
-        UserHasAchievement.fromMap(currentAchievement);
+            UserHasAchievement.fromMap(currentAchievement);
 
         userHasAchievementList.add(userHasAchievement);
       });
@@ -338,7 +338,7 @@ class DatabaseProvider {
             HighscoresFields.columnUserId
           ],
           where:
-          "${HighscoresFields.columnUserId} = ? and ${HighscoresFields.columnGameId} = ?",
+              "${HighscoresFields.columnUserId} = ? and ${HighscoresFields.columnGameId} = ?",
           whereArgs: [user.id, gameID],
           orderBy: "${HighscoresFields.columnScore} DESC",
           limit: 1);
@@ -372,7 +372,7 @@ class DatabaseProvider {
   ///
   /// {@return} <int>
   Future<int> getHighscoreOfGame(int gameID) async {
-    if (kIsWeb) {
+    if (!kIsWeb) {
       final db = await database;
 
       var highscore = await db.query(tableHighscore,
@@ -414,7 +414,7 @@ class DatabaseProvider {
   ///
   /// {@return} <List<Subject>>
   Future<List<Subject>> getSubjects() async {
-    if (kIsWeb) {
+    if (!kIsWeb) {
       final db = await database;
 
       var subjects = await db.query(tableSubjects, columns: [
@@ -453,18 +453,18 @@ class DatabaseProvider {
       final db = await database;
 
       var userSolvedTaskAmounts =
-      await db.query(tableUserSolvedTaskAmount, columns: [
+          await db.query(tableUserSolvedTaskAmount, columns: [
         UserSolvedTaskAmountFields.columnUserId,
         UserSolvedTaskAmountFields.columnSubjectId,
         UserSolvedTaskAmountFields.columnAmount
       ]);
 
       List<UserSolvedTaskAmount> userSolvedTaskAmountList =
-      <UserSolvedTaskAmount>[];
+          <UserSolvedTaskAmount>[];
 
       userSolvedTaskAmounts.forEach((currentUserSolvedTaskAmount) {
         UserSolvedTaskAmount userSolvedTaskAmount =
-        UserSolvedTaskAmount.fromMap(currentUserSolvedTaskAmount);
+            UserSolvedTaskAmount.fromMap(currentUserSolvedTaskAmount);
 
         userSolvedTaskAmountList.add(userSolvedTaskAmount);
       });
@@ -477,7 +477,7 @@ class DatabaseProvider {
 
       if (data != null) {
         userSolvedTaskAmountList = UserSolvedTaskAmountList.fromJson(
-            {"userSolvedTaskAmountList": jsonDecode(data)})
+                {"userSolvedTaskAmountList": jsonDecode(data)})
             .userSolvedTaskAmountList;
       }
 
@@ -618,7 +618,7 @@ class DatabaseProvider {
     if (!kIsWeb) {
       final db = await database;
       UserHasAchievement userHasAchievement =
-      UserHasAchievement(userID: user.id, achievementID: achievement.id);
+          UserHasAchievement(userID: user.id, achievementID: achievement.id);
       await db.insert(tableUserHasAchievements, userHasAchievement.toMap());
     }
   }
@@ -629,7 +629,7 @@ class DatabaseProvider {
   ///
   /// {@return} <Game> with the autoincremented id
   Future<Game> insertGame(Game game) async {
-    if (kIsWeb) {
+    if (!kIsWeb) {
       final db = await database;
       game.id = await db.insert(tableGames, game.toMap());
       return game;
@@ -764,7 +764,7 @@ class DatabaseProvider {
       final db = await database;
       return await db.delete(tableUserHasAchievements,
           where:
-          "${UserHasAchievementsFields.columnUserId} = ? and ${UserHasAchievementsFields.columnAchievementId} = ? ",
+              "${UserHasAchievementsFields.columnUserId} = ? and ${UserHasAchievementsFields.columnAchievementId} = ? ",
           whereArgs: [user.id, achievement.id]);
     } else {
       return 1;
@@ -831,7 +831,7 @@ class DatabaseProvider {
 
       return await db.delete(tableUserSolvedTaskAmount,
           where:
-          "${UserSolvedTaskAmountFields.columnSubjectId} = ? and ${UserSolvedTaskAmountFields.columnUserId} = ?",
+              "${UserSolvedTaskAmountFields.columnSubjectId} = ? and ${UserSolvedTaskAmountFields.columnUserId} = ?",
           whereArgs: [subject.id, user.id]);
     } else {
       return 1;
@@ -1170,7 +1170,7 @@ class DatabaseProvider {
       return await db.update(
           tableUserSolvedTaskAmount, userSolvedTaskAmount.toMap(),
           where:
-          "${UserSolvedTaskAmountFields.columnSubjectId}  = ? and ${UserSolvedTaskAmountFields.columnUserId} = ?",
+              "${UserSolvedTaskAmountFields.columnSubjectId}  = ? and ${UserSolvedTaskAmountFields.columnUserId} = ?",
           whereArgs: [subject.id, user.id]);
     }
     return 1;
@@ -1236,7 +1236,7 @@ class DatabaseProvider {
     if (!kIsWeb) {
       final db = await database;
       saftyQuestion.id =
-      await db.insert(tableSaftyQuestion, saftyQuestion.toMap());
+          await db.insert(tableSaftyQuestion, saftyQuestion.toMap());
       return saftyQuestion;
     }
     List<SaftyQuestion> questions = await getSaftyQuestions();
@@ -1505,7 +1505,7 @@ class DatabaseProvider {
       var leftToSolve = await db.query(tableLeftToSolve,
           columns: [LeftToSolveFields.columnLeftToSolve],
           where:
-          "${LeftToSolveFields.columnTaskString} = ? and ${LeftToSolveFields.columnUserLTSId} = ?",
+              "${LeftToSolveFields.columnTaskString} = ? and ${LeftToSolveFields.columnUserLTSId} = ?",
           whereArgs: [taskString, user.id]);
       if (leftToSolve.length > 0)
         return leftToSolve.first[LeftToSolveFields.columnLeftToSolve];
@@ -1542,7 +1542,7 @@ class DatabaseProvider {
       return await db.update(tableLeftToSolve,
           <String, dynamic>{LeftToSolveFields.columnLeftToSolve: newVal},
           where:
-          "${LeftToSolveFields.columnTaskString} = ? and ${LeftToSolveFields.columnUserLTSId} = ?",
+              "${LeftToSolveFields.columnTaskString} = ? and ${LeftToSolveFields.columnUserLTSId} = ?",
           whereArgs: [t.toString(), user.id]);
     }
     return 1;

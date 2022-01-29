@@ -6,6 +6,7 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flame/gestures.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flame/game.dart';
 import 'package:flame/flame.dart';
@@ -128,9 +129,10 @@ class SnakeGame extends Game with TapDetector {
 
     background = Background(this, _controlBarRelativeHeight);
     spawnApples();
-
-    _bitePlayer =
-        AudioCache(prefix: 'assets/sounds/', fixedPlayer: AudioPlayer());
+    if (!kIsWeb) {
+      _bitePlayer =
+          AudioCache(prefix: 'assets/sounds/', fixedPlayer: AudioPlayer());
+    }
 
     homeView = HomeView(this);
     gameOverView = GameOverView(this);
@@ -280,6 +282,9 @@ class SnakeGame extends Game with TapDetector {
   }
 
   Future<void> playAppleBiteSound() async {
+    if (kIsWeb) {
+      return;
+    }
     await _bitePlayer.play('apple_bite.mp3');
   }
 

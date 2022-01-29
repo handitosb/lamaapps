@@ -4,19 +4,6 @@
    "taskset_grade": 6,
    "taskset_randomize_order": true,
    "tasks": [
-      {
-         "task_type": "NumberLine",
-         "task_reward": 1,
-         "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
-         "left_to_solve": 3,
-         "range": [ 
-              0,
-              100
-           ],
-         "randomRange": false,
-         "steps": 5,
-         "ontap": true
-       },
        {
          "task_type": "Zerlegung",
          "task_reward": 2,
@@ -46,6 +33,32 @@
          "fields_to_replace": 2,
          "allow_replacing_operators": true
       },
+      {
+         "task_type": "NumberLine",
+         "task_reward": 1,
+         "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+         "left_to_solve": 3,
+         "range": [ 
+              -100,
+              0
+           ],
+         "randomRange": false,
+         "steps": 5,
+         "ontap": true
+       },
+     {
+         "task_type": "NumberLine",
+         "task_reward": 1,
+         "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+         "left_to_solve": 3,
+         "range": [ 
+              -100,
+              0
+           ],
+         "randomRange": true,
+         "steps": 5,
+         "ontap": false
+       },
       {
          "task_type": "Equation",
          "task_reward": 2,

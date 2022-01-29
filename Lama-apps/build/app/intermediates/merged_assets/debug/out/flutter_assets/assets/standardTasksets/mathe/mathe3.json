@@ -46,6 +46,32 @@
       "moneyAmount": 3.59
     },
     {
+      "task_type": "NumberLine",
+      "task_reward": 1,
+      "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+      "left_to_solve": 3,
+      "range": [ 
+           0,
+           100
+        ],
+      "randomRange": true,
+      "steps": 5,
+      "ontap": true
+    },
+  {
+      "task_type": "NumberLine",
+      "task_reward": 1,
+      "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+      "left_to_solve": 3,
+      "range": [ 
+           0,
+           1000
+        ],
+      "randomRange": false,
+      "steps": 50,
+      "ontap": false
+    },
+    {
       "task_type": "Equation",
       "task_reward": 2,
       "lama_text": "Löse die Gleichung!",

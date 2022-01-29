@@ -24,6 +24,32 @@
             "left_to_solve": 3,
             "moneyAmount": 2.23
           },
+          {
+            "task_type": "NumberLine",
+            "task_reward": 1,
+            "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+            "left_to_solve": 3,
+            "range": [ 
+                 0,
+                 100
+              ],
+            "randomRange": false,
+            "steps": 5,
+            "ontap": true
+          },
+        {
+            "task_type": "NumberLine",
+            "task_reward": 1,
+            "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+            "left_to_solve": 3,
+            "range": [ 
+                 0,
+                 100
+              ],
+            "randomRange": false,
+            "steps": 5,
+            "ontap": false
+          },
         {
             "task_type": "4Cards",
             "task_reward": 2,

@@ -24,6 +24,32 @@
             "left_to_solve": 3,
             "range": [ 
                  0,
+                 100000
+              ],
+            "randomRange": true,
+            "steps": 5000,
+            "ontap": true
+          },
+        {
+            "task_type": "NumberLine",
+            "task_reward": 1,
+            "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+            "left_to_solve": 3,
+            "range": [ 
+                 0,
+                 10000
+              ],
+            "randomRange": false,
+            "steps": 250,
+            "ontap": false
+          },
+          {
+            "task_type": "NumberLine",
+            "task_reward": 1,
+            "lama_text": "Gib den im Zahlenstrahl rot markierten Wert an!",
+            "left_to_solve": 3,
+            "range": [ 
+                 0,
                  100
               ],
             "randomRange": true,
