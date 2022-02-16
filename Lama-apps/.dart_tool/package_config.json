@@ -9,7 +9,7 @@
     },
     {
       "name": "async",
-      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.1",
+      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -45,7 +45,7 @@
     },
     {
       "name": "characters",
-      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0",
+      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -219,9 +219,15 @@
     },
     {
       "name": "matcher",
-      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.10",
+      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.11",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "material_color_utilities",
+      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/material_color_utilities-0.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
     },
     {
       "name": "meta",
@@ -423,7 +429,7 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.2",
+      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.8",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -441,9 +447,9 @@
     },
     {
       "name": "vector_math",
-      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0",
+      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.14"
     },
     {
       "name": "win32",
@@ -470,7 +476,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2022-01-30T15:11:44.533575Z",
+  "generated": "2022-02-16T20:57:19.963757Z",
   "generator": "pub",
-  "generatorVersion": "2.14.3"
+  "generatorVersion": "2.16.1"
 }
