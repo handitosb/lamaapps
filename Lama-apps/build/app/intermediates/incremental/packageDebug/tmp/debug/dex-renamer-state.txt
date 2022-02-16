@@ -1,4 +1,7 @@
-#Sun Jan 30 00:12:40 CET 2022
-base.0=/Users/tufantopcu/Documents/lamaapps/Lama-apps/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
+#Wed Feb 16 20:38:36 CET 2022
+base.0=G\:\\Users\\tufantopcu\\Documents\\lamaapps\\Lama-apps\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
 path.0=classes.dex
+renamed.0=classes.dex
+base.1=G\:\\Git\\Git\\lamaapps\\Lama-apps\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
