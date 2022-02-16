@@ -161,7 +161,9 @@ class ClockTaskState extends State<ClockTaskScreen> {
       return this.wrgStunde.toString() +
                 ":" +
                 this.wrgMinute.toString();
-    }
+    } return this.wrgStunde.toString() +
+                ":" +
+                this.wrgMinute.toString();
   }
 
   // ignore: missing_return
@@ -217,7 +219,9 @@ class ClockTaskState extends State<ClockTaskScreen> {
       return this.wrgStunde.toString() +
                 ":" +
                 this.wrgMinute.toString();
-    }
+    } return this.wrgStunde.toString() +
+                ":" +
+                this.wrgMinute.toString(); 
   }
 
   @override
