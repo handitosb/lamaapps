@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/tufantopcu/Documents/lamaapps/Lama-apps/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sw/values-sw.xml",
+            "outputFile": "C:\\Users\\johan\\FlutterProjects\\newlamagit\\lamaapps\\Lama-apps\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw\\values-sw.xml",
             "map": [
                 {
-                    "source": "/Users/tufantopcu/.gradle/caches/transforms-2/files-2.1/1b2210cc45d3f8f3cc3f2567d3560f26/core-1.8.0-alpha03/res/values-sw/values-sw.xml",
+                    "source": "C:\\Users\\johan\\.gradle\\caches\\transforms-2\\files-2.1\\8ff19ccf93f302f137cba0c03043cbd2\\core-1.9.0-alpha01\\res\\values-sw\\values-sw.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -45,8 +45,8 @@ class AnswerTaskEvent extends TaskEvent {
   //Constructor used for [TaskGridSelect]
   AnswerTaskEvent.initGridSelect(this.rightPositions, this.markedPositions);
   //Constructor used for [TaskMoney]
-  AnswerTaskEvent.initMoneyTask(double providedAnswerDouble) {
-    this.providedAnswerDouble = providedAnswerDouble;
+  AnswerTaskEvent.initMoneyTask(bool providedAnswerBool) {
+    this.providedAnswerBool = providedAnswerBool;
   }
   //Constructor used for [NumberLine]
   AnswerTaskEvent.initNumberLine(bool providedAnswerBool) {

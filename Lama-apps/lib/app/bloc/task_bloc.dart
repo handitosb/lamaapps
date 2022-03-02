@@ -147,8 +147,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
           yield TaskAnswerResultState(false);
         }
       } else if (t is TaskMoney) {
-        if (event.providedAnswerDouble.toStringAsFixed(2) ==
-            t.moneyAmount.toStringAsFixed(2)) {
+        if (event.providedAnswerBool) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
         } else {

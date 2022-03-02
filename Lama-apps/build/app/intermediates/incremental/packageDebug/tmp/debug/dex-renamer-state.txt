@@ -1,7 +1,4 @@
-#Wed Feb 16 20:38:36 CET 2022
-base.0=G\:\\Users\\tufantopcu\\Documents\\lamaapps\\Lama-apps\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-path.1=classes.dex
-renamed.1=classes2.dex
+#Wed Mar 02 18:24:32 CET 2022
+base.0=C\:\\Users\\johan\\FlutterProjects\\newlamagit\\lamaapps\\Lama-apps\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=G\:\\Git\\Git\\lamaapps\\Lama-apps\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex

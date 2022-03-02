@@ -128,7 +128,7 @@ class Task {
             json['left_to_solve'], List<String>.from(json['wordsToFind']));
       case "MoneyTask":
         return TaskMoney(taskType, json['task_reward'], json['lama_text'],
-            json['left_to_solve'], json['moneyAmount']);
+            json['left_to_solve'], json['difficulty']);
       case "NumberLine":
         return TaskNumberLine(
           taskType,
@@ -482,15 +482,15 @@ class TaskGridSelect extends Task {
 ///
 ///Author: T.Rentsch
 class TaskMoney extends Task {
-  double moneyAmount;
+  int difficulty;
 
   TaskMoney(String taskType, int reward, String lamaText, int leftToSolve,
-      this.moneyAmount)
+      this.difficulty)
       : super(taskType, reward, lamaText, leftToSolve);
 
   @override
   String toString() {
-    return super.toString() + moneyAmount.toString();
+    return super.toString() + difficulty.toString();
   }
 }
 
