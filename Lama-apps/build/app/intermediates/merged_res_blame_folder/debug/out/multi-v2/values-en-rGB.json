@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\johan\\FlutterProjects\\newlamagit\\lamaapps\\Lama-apps\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rGB\\values-en-rGB.xml",
+            "outputFile": "G:\\Git\\Git\\lamaapps\\Lama-apps\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rGB\\values-en-rGB.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\johan\\.gradle\\caches\\transforms-2\\files-2.1\\8ff19ccf93f302f137cba0c03043cbd2\\core-1.9.0-alpha01\\res\\values-en-rGB\\values-en-rGB.xml",
+                    "source": "C:\\Users\\handi\\.gradle\\caches\\transforms-2\\files-2.1\\8ff19ccf93f302f137cba0c03043cbd2\\core-1.9.0-alpha01\\res\\values-en-rGB\\values-en-rGB.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

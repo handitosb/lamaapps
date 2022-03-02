@@ -59,54 +59,38 @@ double currentAmountDouble = 0;
   double tempAmount = 0;
 
   MoneyTaskState(this.task, this.constraints) {
+    int decimals = 3 ;
+    int fac = pow(10, decimals);
     finalMoneyAmount = currentAmountDouble;
+    var rnd = random.nextDouble();
+    rnd = (rnd * fac).round() / fac;
     this.maxAmount = 10;
     // this.moneyAmount = random.nextInt(1000).toDouble();
     // this.moneyAmount /= 100;
-    this.moneyAmount = double.parse(random.nextDouble().toStringAsFixed(3));
+    this.moneyAmount = rnd;
     this.moneyAmount *= maxAmount;
-
-    while (this.tempAmount.toStringAsFixed(2) !=
-        this.moneyAmount.toStringAsFixed(2)) {
-      if (this.moneyAmount - this.tempAmount >= 2) {
-        this.tempAmount =
-            double.parse((this.tempAmount + 2).toStringAsFixed(2));
-        this.minCount++;
-      } else if (this.moneyAmount - this.tempAmount >= 1) {
-        this.tempAmount =
-            double.parse((this.tempAmount + 1).toStringAsFixed(2));
-        this.minCount++;
-      } else if (this.moneyAmount - this.tempAmount >= 0.5) {
-        this.tempAmount =
-            double.parse((this.tempAmount + 0.5).toStringAsFixed(2));
-        this.minCount++;
-      } else if (this.moneyAmount - this.tempAmount >= 0.2) {
-        this.tempAmount =
-            double.parse((this.tempAmount + 0.2).toStringAsFixed(2));
-        this.minCount++;
-      } else if (this.moneyAmount - this.tempAmount >= 0.1) {
-        this.tempAmount =
-            double.parse((this.tempAmount + 0.1).toStringAsFixed(2));
-        this.minCount++;
-      } else if (this.moneyAmount - this.tempAmount >= 0.05) {
-        this.tempAmount =
-            double.parse((this.tempAmount + 0.05).toStringAsFixed(2));
-        this.minCount++;
-      } else if (this.moneyAmount - this.tempAmount >= 0.02) {
-        this.tempAmount =
-            double.parse((this.tempAmount + 0.02).toStringAsFixed(2));
-        this.minCount++;
-      } else if (this.moneyAmount - this.tempAmount >= 0.01) {
-        this.tempAmount =
-            double.parse((this.tempAmount + 0.01).toStringAsFixed(2));
-        this.minCount++;
-      }
-      i++;
-      if (i > 100) {
-        break;
-      }
+    print(this.moneyAmount);
+    
+    while(this.tempAmount != this.moneyAmount){
+      if((this.moneyAmount - this.tempAmount) >= 2){
+        this.tempAmount += 2; ++minCount; print(2); print (this.tempAmount);
+      }else if ((this.moneyAmount - this.tempAmount) >= 1){
+        this.tempAmount += 1; ++minCount; print(1); print (this.tempAmount);
+      }else if ((this.moneyAmount - this.tempAmount) >= 0.5){
+        this.tempAmount += 0.5; ++minCount;print(0.5); print (this.tempAmount);
+      }else if ((this.moneyAmount - this.tempAmount) >= 0.2){
+        this.tempAmount += 0.2; ++minCount; print(0.2); print (this.tempAmount);
+      }else if ((this.moneyAmount - this.tempAmount) >= 0.1){
+        this.tempAmount += 0.1; ++minCount; print(0.1); print (this.tempAmount);
+      }else if ((this.moneyAmount - this.tempAmount) >= 0.05){
+        this.tempAmount += 0.05; ++minCount; print(0.05); print (this.tempAmount);
+      }else if ((this.moneyAmount - this.tempAmount) >= 0.02){
+        this.tempAmount += 0.02; ++minCount; print(0.02); print (this.tempAmount);
+      }else if ((this.moneyAmount - this.tempAmount) >= 0.01){
+        this.tempAmount += 0.01; ++minCount; print(0.01); print (this.tempAmount);
+      } else break;
     }
-    moneyAmountText = moneyAmount.toStringAsFixed(2);
+    moneyAmountText = this.moneyAmount.toStringAsFixed(2);
     moneyAmountText.replaceAll(RegExp(r'.'), ',');
   }
 
@@ -117,7 +101,6 @@ double currentAmountDouble = 0;
     return Column(children: [
       // Row(
       //   children: [
-      Text("moneyAmount: " +moneyAmount.toString() + " "),
 
       Text("currentAmountDouble: " + currentAmountDouble.toString()),
       Text("tempAmount: " + tempAmount.toString() + " "),
