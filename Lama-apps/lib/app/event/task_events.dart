@@ -73,4 +73,8 @@ class AnswerTaskEvent extends TaskEvent {
   AnswerTaskEvent.initZerlegung(List<int> answerParts) {
     this.answerParts = answerParts;
   }
+  AnswerTaskEvent.initClockTask(bool providedAnswerBool) {
+    this.providedAnswerBool = providedAnswerBool;
+    this.providedAnswer = providedAnswer;
+  }
 }

@@ -26,6 +26,7 @@ class ClockTaskScreen extends StatefulWidget {
 }
 
 class ClockTaskState extends State<ClockTaskScreen> {
+  final TextEditingController controller = TextEditingController();
   final BoxConstraints constraints;
   final ClockTest task;
   ClockPainter bloc;
@@ -42,6 +43,7 @@ class ClockTaskState extends State<ClockTaskScreen> {
   var wrgStunde2;
   var wrgMinute2;
   var vierMinute;
+  var allMinuten;
   List<String> wrongAnswer;
 
   String setImage() {
@@ -62,16 +64,17 @@ class ClockTaskState extends State<ClockTaskScreen> {
   }
 
   ClockTaskState(this.task, this.constraints) {
+    this.allMinuten = rnd.nextInt(60);
     this.wrgStunde2 = rnd.nextInt(24);
-    this.wrgMinute2 = rnd.nextInt(2) * 30;
+    this.wrgMinute2 = rnd.nextInt(60);
     this.wrgStunde = rnd.nextInt(24);
-    this.wrgMinute = rnd.nextInt(2) * 30;
+    this.wrgMinute = rnd.nextInt(60);
     this.randStunde = rnd.nextInt(24);
     this.randMinute = rnd.nextInt(2) * 30;
     this.vierMinute = rnd.nextInt(4) * 15;
 
     bloc = ClockPainter(
-        task, constraints, this.randStunde, this.randMinute, this.vierMinute);
+        task, constraints, this.randStunde, this.randMinute, this.vierMinute, this.allMinuten);
     task.rightAnswer = bloc.strAnswer();
     answers.add(task.rightAnswer); //get the right answer
     answers.add(wrgAnswer());
@@ -108,125 +111,131 @@ class ClockTaskState extends State<ClockTaskScreen> {
     });
   }
 
-  // ignore: missing_return
+
   String wrgAnswer() {
     if (this.wrgStunde != this.randStunde ||
         this.wrgMinute != this.randMinute) {
-      if (task.uhr == "vollStunde") {
+      if (task.uhr == "halbeStunde") {
+      if (this.wrgMinute == 0) {
         if (this.wrgStunde < 10) {
           return "0" + this.wrgStunde.toString() + ":" + "00";
         } else {
           return this.wrgStunde.toString() + ":" + "00";
         }
-      } else if(task.uhr == "halbeStunde") {
-        if (this.wrgMinute == 0) {
-          if (this.wrgStunde < 10) {
-            return "0" + this.wrgStunde.toString() + ":" + "00";
-          } else if (this.wrgStunde >= 10) {
-            return this.wrgStunde.toString() + ":" + "00";
-          }
-          } else {
-              if (this.wrgStunde < 10) {
-                return "0" +
-                    this.wrgStunde.toString() +
-                    ":" +
-                      this.wrgMinute.toString();
-              } else if (this.wrgStunde >= 10) {
-                  return this.wrgStunde.toString() +
-                    ":" +
-                    this.wrgMinute.toString();
-          }
+      } else {
+        if (this.wrgStunde < 10) {
+          return "0" + this.wrgStunde.toString() + ":" + this.wrgStunde.toString();
         }
-      } else if(task.uhr == "viertelStunde") {
-        if (this.wrgMinute == 0) {
-          if (this.wrgStunde < 10) {
-            return "0" + this.wrgStunde.toString() + ":" + "00";
-          } else {
-            return this.wrgStunde.toString() + ":" + "00";
-          }
-        } else {
-          if (this.wrgStunde < 10) {
-            return "0" +
-                this.wrgStunde.toString() +
-                ":" +
-                this.wrgMinute.toString();
-          } else {
-            return this.wrgStunde.toString() +
-                ":" +
-                this.wrgMinute.toString();
-          }
-        }
+        return this.wrgStunde.toString() + ":" + this.wrgMinute.toString();
       }
-    } else {
-      return this.wrgStunde.toString() +
-                ":" +
-                this.wrgMinute.toString();
-    } return this.wrgStunde.toString() +
-                ":" +
-                this.wrgMinute.toString();
+    } else if (task.uhr == "vollStunde") {
+      if (this.wrgStunde < 10) {
+        return "0" + this.wrgStunde.toString() + ":" + "00";
+      } else {
+        return this.wrgStunde.toString() + ":" + "00";
+      }
+    } else if (task.uhr == "viertelStunde") {
+      if (this.wrgMinute == 0) {
+        if (this.randStunde < 10) {
+          return "0" + this.wrgStunde.toString() + ":" + "00";
+        } else {
+          return this.wrgStunde.toString() + ":" + "00";
+        }
+      } else {
+        if (this.wrgStunde < 10) {
+          return "0" + this.wrgStunde.toString() + ":" + this.wrgMinute.toString();
+        } else {
+          return this.wrgStunde.toString() + ":" + this.wrgMinute.toString();
+          }
+      }
+    } 
+    else if (task.uhr == "allStunden"){
+        if (this.wrgMinute < 10){
+          if (this.wrgStunde < 10){
+          return "0" + this.wrgStunde.toString() + ":" + "0" + this.wrgMinute.toString();
+          } else {
+            return this.wrgStunde.toString() + ":" + "0" + this.wrgMinute.toString();
+          }
+        }
+        else if (this.allMinuten >= 10) {
+          if (this.wrgStunde < 10){
+            return "0" + this.wrgStunde.toString() + ":" + this.wrgMinute.toString();
+        } else {
+          return this.wrgStunde.toString() + ":" + this.wrgMinute.toString();
+        }
+        } else {
+        return this.wrgStunde.toString() + ":" + this.wrgMinute.toString();
+        }
+      } 
+    } return this.wrgStunde.toString() + ":" + this.wrgMinute.toString();
   }
 
-  // ignore: missing_return
   String wrgAnswer2() {
     if (this.wrgStunde2 != this.randStunde ||
         this.wrgMinute2 != this.randMinute) {
-      if (task.uhr == "vollStunde") {
+        if (task.uhr == "halbeStunde") {
+        if (this.wrgMinute2 == 0) {
+          if (this.wrgStunde2 < 10) {
+          return "0" + this.wrgStunde2.toString() + ":" + "00";
+        } else {
+          return this.wrgStunde2.toString() + ":" + "00";
+        }
+        } else {
+        if (this.wrgStunde2 < 10) {
+          return "0" +
+              this.wrgStunde2.toString() +
+              ":" +
+              this.wrgMinute2.toString();
+        }
+        return this.wrgStunde2.toString() + ":" + this.wrgMinute2.toString();
+        }
+       } else if (task.uhr == "vollStunde") {
+        if (this.wrgStunde2 < 10) {
+        return "0" + this.wrgStunde2.toString() + ":" + "00";
+        } else {
+        return this.wrgStunde2.toString() + ":" + "00";
+        }
+       } else if (task.uhr == "viertelStunde") {
+        if (this.wrgMinute2 == 0) {
         if (this.wrgStunde2 < 10) {
           return "0" + this.wrgStunde2.toString() + ":" + "00";
         } else {
           return this.wrgStunde2.toString() + ":" + "00";
         }
-      } else if(task.uhr == "halbeStunde") {
-        if (this.wrgMinute2 == 0) {
-          if (this.wrgStunde2 < 10) {
-            return "0" + this.wrgStunde2.toString() + ":" + "00";
-          } else if (this.wrgStunde2 >= 10) {
-            return this.wrgStunde2.toString() + ":" + "00";
-          }
         } else {
-          if (this.wrgStunde2 < 10) {
-            return "0" +
-                this.wrgStunde2.toString() +
-                ":" +
-                this.wrgMinute2.toString();
-          } else {
-            return this.wrgStunde2.toString() +
-                ":" +
-                this.wrgMinute2.toString();
+        if (this.wrgStunde2 < 10) {
+          return "0" +
+              this.wrgStunde2.toString() +
+              ":" +
+              this.wrgMinute2.toString();
+        } else {
+          return this.wrgStunde2.toString() + ":" + this.wrgMinute2.toString();
           }
         }
-      } else if(task.uhr == "viertelStunde") {
-        if (this.wrgMinute2 == 0) {
-          if (this.wrgStunde2 < 10) {
-            return "0" + this.wrgStunde2.toString() + ":" + "00";
-          } else if (this.wrgStunde2 >= 10) {
-            return this.wrgStunde2.toString() + ":" + "00";
-          }
+        } else if (task.uhr == "allStunden"){
+        if (this.wrgMinute2 < 10){
+        if (this.wrgStunde2 < 10){
+          return "0" + this.wrgStunde2.toString() + ":" + "0" + this.wrgMinute2.toString();
         } else {
-          if (this.wrgStunde2 < 10) {
-            return "0" +
-                this.wrgStunde2.toString() +
-                ":" +
-                this.wrgMinute2.toString();
-          } else {
-            return this.wrgStunde2.toString() +
-                ":" +
-                this.wrgMinute2.toString();
-          }
+          return this.wrgStunde.toString() + ":" + "0" + this.wrgMinute.toString();
         }
-      }
-    } else {
-      return this.wrgStunde.toString() +
-                ":" +
-                this.wrgMinute.toString();
-    } return this.wrgStunde.toString() +
-                ":" +
-                this.wrgMinute.toString(); 
+        }else if (this.wrgMinute2 >= 10) {
+        if (this.wrgStunde2 < 10){
+          return "0" + this.wrgStunde2.toString() + ":" + this.wrgMinute2.toString();
+        } else {
+          return this.wrgStunde2.toString() + ":" + this.wrgMinute2.toString();
+        }
+        } else {
+        return this.wrgStunde2.toString() + ":" + this.wrgMinute2.toString();
+        }
+      } 
+    } return this.wrgStunde2.toString() + ":" + this.wrgMinute2.toString();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    if (task.uhr == "allStunden"){
+      return Column(children: [
       // Lama Speechbubble
       Container(
         height: (constraints.maxHeight / 100) * 15,
@@ -282,7 +291,186 @@ class ClockTaskState extends State<ClockTaskScreen> {
               height: 270,
               child: CustomPaint(
                   painter: ClockPainter(
-                      task, constraints, randStunde, randMinute, vierMinute)),
+                      task, constraints, randStunde, randMinute, vierMinute, allMinuten)),
+            )),
+      ),
+      Container(
+        height: (constraints.maxHeight / 100) * 27.5,
+        alignment: Alignment.topCenter,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+                child: Align(
+              alignment: Alignment.bottomLeft,
+              child: Center(
+                child: Text(
+                  showtimer,
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            )),
+            Container(
+                height: (constraints.maxHeight / 100) * 15,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: TextField(
+                      autocorrect: false,
+                      enableSuggestions: false,
+                      cursorColor: Colors.white,
+                      controller: controller,
+                      decoration: InputDecoration(
+                          fillColor: LamaColors.blueAccent,
+                          hintStyle: LamaTextTheme.getStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: LamaColors.white.withOpacity(0.5)),
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50)),
+                              borderSide: BorderSide.none),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50)),
+                              borderSide: BorderSide.none),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50)),
+                              borderSide: BorderSide.none),
+                          hintText: 'Gib die Uhrzeit ein! (HH:MM)'),
+                      maxLines: 1,
+                      keyboardType: TextInputType.text,
+                      textAlign: TextAlign.center,
+                      style: LamaTextTheme.getStyle(
+                          fontSize: 22.5, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                )),
+              ]),
+            ),
+            Container(
+              height: (constraints.maxHeight / 100) * 9,
+              child: Center(
+                child: InkWell(
+                  child: Container(
+                    height: (constraints.maxHeight / 100) * 15,
+                    width: (constraints.maxWidth / 100) * 70,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(25),
+                      ),
+                      color: LamaColors.greenAccent,
+                      boxShadow: [
+                        BoxShadow(
+                            offset: Offset(0, 2),
+                            color: LamaColors.black.withOpacity(0.5))
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Fertig!",
+                        style: LamaTextTheme.getStyle(
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    bool noInput = true;
+                    if ((controller.text) != null) {
+                      noInput = false;
+                    }
+                    if (noInput) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      duration: Duration(seconds: 2),
+                      content: Container(
+                      height: (constraints.maxHeight / 100) * 6,
+                      alignment: Alignment.bottomCenter,
+                      child: Center(
+                        child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        "Gib eine Zahl ein!",
+                        style: LamaTextTheme.getStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                    ))),
+                backgroundColor: LamaColors.mainPink,
+              ));
+            } else {
+              bool answer = (controller.text) == task.rightAnswer;
+              BlocProvider.of<TaskBloc>(context)
+                  .add(AnswerTaskEvent.initClockTask(answer));
+                  print(answer);
+                    }
+                  }),
+              ),
+            ),
+          ],
+        );
+    } else {
+      return Column(children: [
+      // Lama Speechbubble
+      Container(
+        height: (constraints.maxHeight / 100) * 15,
+        padding: EdgeInsets.only(left: 15, right: 15, top: 15),
+        // create space between each childs
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding: EdgeInsets.only(left: 75),
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: Bubble(
+                  nip: BubbleNip.leftCenter,
+                  child: Center(
+                    child: Text(
+                      task.lamaText,
+                      style: LamaTextTheme.getStyle(
+                          color: LamaColors.black, fontSize: 15),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: SvgPicture.asset(
+                "assets/images/svg/lama_head.svg",
+                semanticsLabel: "Lama Anna",
+                width: 75,
+              ),
+            ),
+            Align(
+                alignment: Alignment(1.0, 5.0),
+                child: Container(
+                    padding: EdgeInsets.only(left: 100, top: 15),
+                    child: Image.asset(
+                      setImage(),
+                      width: 30,
+                      height: 30,
+                    ))),
+          ],
+        ),
+      ),
+      //Items
+      Padding(
+        padding: EdgeInsets.all(5),
+        child: Container(
+            height: (constraints.maxHeight / 100) * 45,
+            child: Container(
+              width: 270,
+              height: 270,
+              child: CustomPaint(
+                  painter: ClockPainter(
+                      task, constraints, randStunde, randMinute, vierMinute, allMinuten)),
             )),
       ),
       Container(
@@ -390,11 +578,14 @@ class ClockTaskState extends State<ClockTaskScreen> {
         ),
       )
     ]);
+    }
+    
   }
 }
 
 class ClockPainter extends CustomPainter {
   final ClockTest task;
+  var allMinuten;
   var wrgStunde;
   var wrgMinute;
   var rnd = Random();
@@ -404,10 +595,11 @@ class ClockPainter extends CustomPainter {
   final BoxConstraints constraints;
 
   ClockPainter(
-      this.task, this.constraints, randStunde, randMinute, vierMinute) {
+      this.task, this.constraints, randStunde, randMinute, vierMinute, allMinuten) {
     this.randStunde = randStunde;
     this.randMinute = randMinute;
     this.vierMinute = vierMinute;
+    this.allMinuten = allMinuten;
   }
 
   @override
@@ -452,11 +644,28 @@ class ClockPainter extends CustomPainter {
               this.randStunde.toString() +
               ":" +
               this.vierMinute.toString();
-        }
-        return this.randStunde.toString() + ":" + this.vierMinute.toString();
+        } else {
+          return this.randStunde.toString() + ":" + this.vierMinute.toString();
+          }
       }
-    } return this.randStunde.toString() + ":" + this.vierMinute.toString();
-  }
+    } else if (task.uhr == "allStunden"){
+      if (this.allMinuten < 10){
+        if (this.randStunde < 10){
+          return "0" + this.randStunde.toString() + ":" + "0" + this.allMinuten.toString();
+        } else {
+          return this.randStunde.toString() + ":" + "0" + this.allMinuten.toString();
+        }
+      }else if (this.allMinuten >= 10) {
+        if (this.randStunde < 10){
+          return "0" + this.randStunde.toString() + ":" + this.allMinuten.toString();
+        } else {
+          return this.randStunde.toString() + ":" + this.allMinuten.toString();
+        }
+      } else {
+        return this.randStunde.toString() + ":" + this.allMinuten.toString();
+      }
+    } return this.randStunde.toString() + ":" + this.randMinute.toString();
+}
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -603,6 +812,23 @@ class ClockPainter extends CustomPainter {
               canvas.drawLine(
                   center, Offset(hourClockX, hourClockY), hourClock1);
               print(randStunde.toString() + ":" + randMinute.toString());
+            }
+          }
+        }
+      }
+    } else if (task.uhr == "allStunden"){
+      for (int j = 0; j < 60; j++){
+        if (j == allMinuten){
+          for (int i = 0; i < 24; i++){
+            if (i == randStunde){
+              var minClockX = X + 80 * cos((270 + j * 6) * pi / 180);
+              var minClockY = Y + 80 * sin((270 + j * 6) * pi / 180);
+              var hourClockX = X + 60 * cos((i * 30 + 270 + j * 0.5) * pi / 180);
+              var hourClockY = Y + 60 * sin((i * 30 + 270 + j * 0.5) * pi / 180);
+              canvas.drawLine(center, Offset(minClockX, minClockY), minClock1);
+              canvas.drawLine(
+                  center, Offset(hourClockX, hourClockY), hourClock1);
+              print(randStunde.toString() + ":" + allMinuten.toString());
             }
           }
         }

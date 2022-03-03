@@ -76,11 +76,16 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
         if (event.providedAnswer == t.rightAnswer) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
-        } else {
+        } else if (event.providedAnswerBool == true){
+          rightAnswerCallback(t);
+          yield TaskAnswerResultState(true);
+        }
+        else { 
           wrongAnswerCallback(t);
           yield TaskAnswerResultState(false);
         }
-      } else if (t is TaskClozeTest) {
+      }
+      else if (t is TaskClozeTest) {
         if (event.providedAnswer == t.rightAnswer) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
