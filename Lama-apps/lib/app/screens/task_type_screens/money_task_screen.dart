@@ -24,7 +24,7 @@ import 'package:decimal/decimal.dart';
 /// latest Changes: 22.07.2021
 
 /// Globale Variables
-// currentAmountDouble is used to Store the gathered amount of money
+// currentAmountInt is used to Store the gathered amount of money
 
 
 class MoneyTaskScreen extends StatefulWidget {
@@ -45,57 +45,58 @@ class MoneyTaskState extends State<MoneyTaskScreen> {
   final TaskMoney task;
   final BoxConstraints constraints;
   // Value which is checked after pressing the "fertig" Button
-  double finalMoneyAmount;
+  int finalMoneyAmount;
   // Stores the pressed coins
   // needed for the undo button
-  List<double> deletions = [];
-double currentAmountDouble = 0;
+  List<int> deletions = [];
+int currentAmountInt = 0;
   //index maps to coins => 2€ = 0 1 € = 1, usw..
   List<int> amounts = [0, 0, 0, 0, 0, 0, 0, 0];
   int i = 0;
   bool answer;
   var random = Random();
   var rnd;
-  String moneyAmount;
+  int moneyAmount;
   int maxAmount;
   String moneyAmountText;
   int minCount = 0;
-  double tempAmount = 0;
+  int tempAmount = 0;
   int decimals = 3;
 
   MoneyTaskState(this.task, this.constraints) {
-    finalMoneyAmount = currentAmountDouble;
-    rnd = random.nextDouble().toStringAsPrecision(3);
+    finalMoneyAmount = currentAmountInt;
+    rnd = random.nextInt(1000);
     print(rnd);
     this.maxAmount = 10;
     // this.moneyAmount = random.nextInt(1000).toDouble();
     // this.moneyAmount /= 100;
     this.moneyAmount = rnd;
     print(rnd);
-    this.moneyAmount = (double.parse(this.moneyAmount) * this.maxAmount).toString();
     print(this.moneyAmount);
     
-    while(Decimal.parse(this.tempAmount.toString()) != Decimal.parse(this.moneyAmount)){
-      if((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('2.00')){
-         this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 2.00; minCount += 1; print(2); print (this.tempAmount); print(minCount);
-      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('1.00')){
-         this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 1.00; minCount += 1; print(1); print (this.tempAmount); print(minCount);
-      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.50')){
-        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.50; minCount += 1;print(0.5); print (this.tempAmount); print(minCount);
-      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.20')){
-        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.20; minCount += 1; print (this.tempAmount); print(minCount);
-      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.10')){
-        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.10; minCount += 1; print (this.tempAmount); print(minCount);
-      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.05')){
-        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.05; minCount += 1; print (this.tempAmount); print(minCount);
-      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.02')){
-        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.02; minCount += 1; print (this.tempAmount); print(minCount);
-      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.01')){
-        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.01; minCount += 1; print (this.tempAmount); print(minCount);
-      }else break;
+    while(this.moneyAmount != this.tempAmount){
+      if((this.moneyAmount - this.tempAmount) >= 200){
+        this.tempAmount += 200; ++minCount;
+      }else if((this.moneyAmount - this.tempAmount) >= 100){
+        this.tempAmount += 100; ++minCount;
+      }else if((this.moneyAmount - this.tempAmount) >= 50){
+        this.tempAmount += 50; ++minCount;
+      }else if((this.moneyAmount - this.tempAmount) >= 20){
+        this.tempAmount += 20; ++minCount;
+      }else if((this.moneyAmount - this.tempAmount) >= 10){
+        this.tempAmount += 10; ++minCount;
+      }else if((this.moneyAmount - this.tempAmount) >= 5){
+        this.tempAmount += 5; ++minCount;
+      }else if((this.moneyAmount - this.tempAmount) >= 2){
+        this.tempAmount += 2; ++minCount;
+      }else if((this.moneyAmount - this.tempAmount) >= 1){
+        this.tempAmount += 1; ++minCount;
+      }else {
+        break;
+      }
     }
-    moneyAmountText = this.moneyAmount;
-    print(moneyAmountText);
+    
+    moneyAmountText = this.moneyAmount.toString().substring(0,1) + "." + this.moneyAmount.toString().substring(1, this.moneyAmount.toString().length);
     moneyAmountText.replaceAll(RegExp(r'.'), ',');
   }
 
@@ -107,12 +108,12 @@ double currentAmountDouble = 0;
       // Row(
       //   children: [
 
-      Text("currentAmountDouble: " + currentAmountDouble.toString()),
-      Text("tempAmount: " + tempAmount.toString() + " "),
-      Text("Optimum: " + minCount.toString() + " "),
-      Text("i:" + i.toString()),
+      //Text("currentAmountInt: " + currentAmountInt.toString()),
+      //Text("tempAmount: " + tempAmount.toString() + " "),
+      //Text("Optimum: " + minCount.toString() + " "),
+      //Text("i:" + i.toString()),
 
-      //   ],double.parse(finalMoneyAmount.toStringAsFixed(2)
+      //   ],int.parse(finalMoneyAmount.toStringAsFixed(2)
       // ),
       // Lama Speechbubble
       Container(
@@ -121,7 +122,7 @@ double currentAmountDouble = 0;
         // create space between each child
         child: Stack(
           children: [
-            Text(sum.toString()),
+            //Text(sum.toString()),
             Align(
               alignment: Alignment.centerLeft,
               child: Container(
@@ -184,11 +185,11 @@ double currentAmountDouble = 0;
                 ),
                 onTap: () {
                   setState(() {
-                    deletions.add(2);
+                    deletions.add(200);
                     amounts[0]++;
-                    currentAmountDouble = currentAmountDouble + 2;
-                    currentAmountDouble =
-                        double.parse(currentAmountDouble.toStringAsFixed(2));
+                    currentAmountInt = currentAmountInt + 200;
+                    currentAmountInt =
+                        int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -223,13 +224,13 @@ double currentAmountDouble = 0;
                 ),
                 onTap: () {
                   setState(() {
-                    deletions.add(1);
+                    deletions.add(100);
                     amounts[1]++;
                     (task.difficulty == 3)
-                        ? currentAmountDouble = currentAmountDouble + 5
-                        : currentAmountDouble = currentAmountDouble + 1;
-                    currentAmountDouble =
-                        double.parse(currentAmountDouble.toStringAsFixed(2));
+                        ? currentAmountInt = currentAmountInt + 5
+                        : currentAmountInt = currentAmountInt + 100;
+                    currentAmountInt =
+                        int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -257,11 +258,11 @@ double currentAmountDouble = 0;
                 ),
                 onTap: () {
                   setState(() {
-                    deletions.add(0.5);
+                    deletions.add(50);
                     amounts[2]++;
-                    currentAmountDouble = currentAmountDouble + 0.5;
-                    currentAmountDouble =
-                        double.parse(currentAmountDouble.toStringAsFixed(2));
+                    currentAmountInt = currentAmountInt + 50;
+                    currentAmountInt =
+                        int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -285,11 +286,11 @@ double currentAmountDouble = 0;
                 ),
                 onTap: () {
                   setState(() {
-                    deletions.add(0.2);
+                    deletions.add(20);
                     amounts[3]++;
-                    currentAmountDouble = currentAmountDouble + 0.2;
-                    currentAmountDouble =
-                        double.parse(currentAmountDouble.toStringAsFixed(2));
+                    currentAmountInt = currentAmountInt + 20;
+                    currentAmountInt =
+                        int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -332,11 +333,11 @@ double currentAmountDouble = 0;
                 ),
                 onTap: () {
                   setState(() {
-                    deletions.add(0.1);
+                    deletions.add(10);
                     amounts[4]++;
-                    currentAmountDouble = currentAmountDouble + 0.1;
-                    currentAmountDouble =
-                        double.parse(currentAmountDouble.toStringAsFixed(2));
+                    currentAmountInt = currentAmountInt + 10;
+                    currentAmountInt =
+                        int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -365,11 +366,11 @@ double currentAmountDouble = 0;
                 ),
                 onTap: () {
                   setState(() {
-                    deletions.add(0.05);
+                    deletions.add(5);
                     amounts[5]++;
-                    currentAmountDouble = currentAmountDouble + 0.05;
-                    currentAmountDouble =
-                        double.parse(currentAmountDouble.toStringAsFixed(2));
+                    currentAmountInt = currentAmountInt + 5;
+                    currentAmountInt =
+                        int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -398,11 +399,11 @@ double currentAmountDouble = 0;
                 ),
                 onTap: () {
                   setState(() {
-                    deletions.add(0.02);
+                    deletions.add(2);
                     amounts[6]++;
-                    currentAmountDouble = currentAmountDouble + 0.02;
-                    currentAmountDouble =
-                        double.parse(currentAmountDouble.toStringAsFixed(2));
+                    currentAmountInt = currentAmountInt + 2;
+                    currentAmountInt =
+                        int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -427,11 +428,11 @@ double currentAmountDouble = 0;
                 ),
                 onTap: () {
                   setState(() {
-                    deletions.add(0.01);
+                    deletions.add(1);
                     amounts[7]++;
-                    currentAmountDouble = currentAmountDouble + 0.01;
-                    currentAmountDouble =
-                        double.parse(currentAmountDouble.toStringAsFixed(2));
+                    currentAmountInt = currentAmountInt + 1;
+                    currentAmountInt =
+                        int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -472,9 +473,9 @@ double currentAmountDouble = 0;
                     onPressed: () {
                       setState(() {
                         if (deletions.isNotEmpty) {
-                          currentAmountDouble =
-                              currentAmountDouble - deletions.last;
-                          double deletedElement = deletions.removeLast();
+                          currentAmountInt =
+                              currentAmountInt - deletions.last;
+                          int deletedElement = deletions.removeLast();
                           updateAmount(deletedElement);
                         } else {
                           ScaffoldMessenger.of(context).removeCurrentSnackBar();
@@ -526,23 +527,33 @@ double currentAmountDouble = 0;
                     ),
                   ),
                   onTap: () {
-                    finalMoneyAmount = currentAmountDouble;
-                    currentAmountDouble = 0;
+                    finalMoneyAmount = currentAmountInt;
+                    currentAmountInt = 0;
                     tempAmount = 0;
                     deletions.clear();
                     print("finalmoneyamount: $finalMoneyAmount");
                     print(
                         "finalMoneyAmount.toStringAsFixed(2): $finalMoneyAmount.toStringAsFixed(2)");
                     print("moneyAmount: $moneyAmount");
-
+                  if (task.optimum == true){
                     if ((this.finalMoneyAmount.toString()) ==
-                        (this.moneyAmount)) {
+                        (this.moneyAmount.toString()) && sum == minCount) {
                       answer = true;
                       print("correct");
                     } else {
                       answer = false;
                       print("false");
                     }
+                  }else {if ((this.finalMoneyAmount.toString()) ==
+                        (this.moneyAmount.toString())) {
+                      answer = true;
+                      print("correct");
+                    } else {
+                      answer = false;
+                      print("false");
+                    }
+                    }
+                    
                     // (finalMoneyAmount.toStringAsFixed(2) == moneyAmount) ? answer = true : answer = false;
                     BlocProvider.of<TaskBloc>(context)
                         .add(AnswerTaskEvent.initMoneyTask(answer));
@@ -560,21 +571,21 @@ double currentAmountDouble = 0;
   /// after undoing a tapp the counter of the last tapped coin needs to be decrement
   /// {@param} double [deletedElement] indicates which coin got pressed last
   updateAmount(deletedElement) {
-    if (deletedElement == 2) {
+    if (deletedElement == 200) {
       amounts[0]--;
-    } else if (deletedElement == 1) {
+    } else if (deletedElement == 100) {
       amounts[1]--;
-    } else if (deletedElement == 0.5) {
+    } else if (deletedElement == 50) {
       amounts[2]--;
-    } else if (deletedElement == 0.2) {
+    } else if (deletedElement == 20) {
       amounts[3]--;
-    } else if (deletedElement == 0.1) {
+    } else if (deletedElement == 10) {
       amounts[4]--;
-    } else if (deletedElement == 0.05) {
+    } else if (deletedElement == 5) {
       amounts[5]--;
-    } else if (deletedElement == 0.02) {
+    } else if (deletedElement == 2) {
       amounts[6]--;
-    } else if (deletedElement == 0.01) {
+    } else if (deletedElement == 1) {
       amounts[7]--;
     }
   }
