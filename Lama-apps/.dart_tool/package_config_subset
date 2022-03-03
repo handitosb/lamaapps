@@ -58,6 +58,10 @@ dbcrypt
 1.24
 file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/dbcrypt-1.0.0/
 file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/dbcrypt-1.0.0/lib/
+decimal
+2.14
+file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/decimal-2.1.0/
+file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/decimal-2.1.0/lib/
 dio
 2.12
 file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.4/
@@ -214,6 +218,10 @@ provider
 2.12
 file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/provider-6.0.2/
 file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/provider-6.0.2/lib/
+rational
+2.14
+file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/rational-2.1.0/
+file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/rational-2.1.0/lib/
 shared_preferences
 2.14
 file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.13/

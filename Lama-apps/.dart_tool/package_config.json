@@ -92,6 +92,12 @@
       "languageVersion": "1.24"
     },
     {
+      "name": "decimal",
+      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/decimal-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "dio",
       "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.4",
       "packageUri": "lib/",
@@ -344,6 +350,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "rational",
+      "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/rational-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "shared_preferences",
       "rootUri": "file:///F:/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.13",
       "packageUri": "lib/",
@@ -494,7 +506,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2022-03-02T17:45:56.300961Z",
+  "generated": "2022-03-03T10:33:57.728668Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

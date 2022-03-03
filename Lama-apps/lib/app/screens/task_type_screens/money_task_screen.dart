@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:bubble/bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ import 'package:lama_app/util/LamaColors.dart';
 import 'package:lama_app/util/LamaTextTheme.dart';
 import 'package:collection/collection.dart';
 import 'dart:math';
+import 'package:decimal/decimal.dart';
 
 /// This file creates the Money task Screen
 /// The Money Task is used to learn the calculating with money.
@@ -52,45 +55,47 @@ double currentAmountDouble = 0;
   int i = 0;
   bool answer;
   var random = Random();
-  double moneyAmount;
+  var rnd;
+  String moneyAmount;
   int maxAmount;
   String moneyAmountText;
   int minCount = 0;
   double tempAmount = 0;
+  int decimals = 3;
 
   MoneyTaskState(this.task, this.constraints) {
-    int decimals = 3 ;
-    int fac = pow(10, decimals);
     finalMoneyAmount = currentAmountDouble;
-    var rnd = random.nextDouble();
-    rnd = (rnd * fac).round() / fac;
+    rnd = random.nextDouble().toStringAsPrecision(3);
+    print(rnd);
     this.maxAmount = 10;
     // this.moneyAmount = random.nextInt(1000).toDouble();
     // this.moneyAmount /= 100;
     this.moneyAmount = rnd;
-    this.moneyAmount *= maxAmount;
+    print(rnd);
+    this.moneyAmount = (double.parse(this.moneyAmount) * this.maxAmount).toString();
     print(this.moneyAmount);
     
-    while(this.tempAmount != this.moneyAmount){
-      if((this.moneyAmount - this.tempAmount) >= 2){
-        this.tempAmount += 2; ++minCount; print(2); print (this.tempAmount);
-      }else if ((this.moneyAmount - this.tempAmount) >= 1){
-        this.tempAmount += 1; ++minCount; print(1); print (this.tempAmount);
-      }else if ((this.moneyAmount - this.tempAmount) >= 0.5){
-        this.tempAmount += 0.5; ++minCount;print(0.5); print (this.tempAmount);
-      }else if ((this.moneyAmount - this.tempAmount) >= 0.2){
-        this.tempAmount += 0.2; ++minCount; print(0.2); print (this.tempAmount);
-      }else if ((this.moneyAmount - this.tempAmount) >= 0.1){
-        this.tempAmount += 0.1; ++minCount; print(0.1); print (this.tempAmount);
-      }else if ((this.moneyAmount - this.tempAmount) >= 0.05){
-        this.tempAmount += 0.05; ++minCount; print(0.05); print (this.tempAmount);
-      }else if ((this.moneyAmount - this.tempAmount) >= 0.02){
-        this.tempAmount += 0.02; ++minCount; print(0.02); print (this.tempAmount);
-      }else if ((this.moneyAmount - this.tempAmount) >= 0.01){
-        this.tempAmount += 0.01; ++minCount; print(0.01); print (this.tempAmount);
-      } else break;
+    while(Decimal.parse(this.tempAmount.toString()) != Decimal.parse(this.moneyAmount)){
+      if((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('2.00')){
+         this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 2.00; minCount += 1; print(2); print (this.tempAmount); print(minCount);
+      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('1.00')){
+         this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 1.00; minCount += 1; print(1); print (this.tempAmount); print(minCount);
+      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.50')){
+        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.50; minCount += 1;print(0.5); print (this.tempAmount); print(minCount);
+      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.20')){
+        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.20; minCount += 1; print (this.tempAmount); print(minCount);
+      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.10')){
+        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.10; minCount += 1; print (this.tempAmount); print(minCount);
+      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.05')){
+        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.05; minCount += 1; print (this.tempAmount); print(minCount);
+      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.02')){
+        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.02; minCount += 1; print (this.tempAmount); print(minCount);
+      }else if ((Decimal.parse(this.moneyAmount) - Decimal.parse(this.tempAmount.toString())) >= Decimal.parse('0.01')){
+        this.tempAmount =  double.parse(this.tempAmount.toStringAsPrecision(3)) + 0.01; minCount += 1; print (this.tempAmount); print(minCount);
+      }else break;
     }
-    moneyAmountText = this.moneyAmount.toStringAsFixed(2);
+    moneyAmountText = this.moneyAmount;
+    print(moneyAmountText);
     moneyAmountText.replaceAll(RegExp(r'.'), ',');
   }
 
@@ -530,8 +535,8 @@ double currentAmountDouble = 0;
                         "finalMoneyAmount.toStringAsFixed(2): $finalMoneyAmount.toStringAsFixed(2)");
                     print("moneyAmount: $moneyAmount");
 
-                    if (double.parse(finalMoneyAmount.toStringAsFixed(2)) ==
-                        double.parse(moneyAmount.toStringAsFixed(2))) {
+                    if ((this.finalMoneyAmount.toString()) ==
+                        (this.moneyAmount)) {
                       answer = true;
                       print("correct");
                     } else {

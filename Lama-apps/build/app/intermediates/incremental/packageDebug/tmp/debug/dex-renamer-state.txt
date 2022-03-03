@@ -1,4 +1,4 @@
-#Thu Mar 03 08:48:41 CET 2022
+#Thu Mar 03 12:47:51 CET 2022
 base.0=G\:\\Git\\Git\\lamaapps\\Lama-apps\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
