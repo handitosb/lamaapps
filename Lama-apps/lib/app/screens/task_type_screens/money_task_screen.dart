@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:bubble/bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +24,6 @@ import 'package:decimal/decimal.dart';
 /// Globale Variables
 // currentAmountInt is used to Store the gathered amount of money
 
-
 class MoneyTaskScreen extends StatefulWidget {
   final TaskMoney task;
   final BoxConstraints constraints;
@@ -49,7 +46,7 @@ class MoneyTaskState extends State<MoneyTaskScreen> {
   // Stores the pressed coins
   // needed for the undo button
   List<int> deletions = [];
-int currentAmountInt = 0;
+  int currentAmountInt = 0;
   //index maps to coins => 2€ = 0 1 € = 1, usw..
   List<int> amounts = [0, 0, 0, 0, 0, 0, 0, 0];
   int i = 0;
@@ -61,43 +58,79 @@ int currentAmountInt = 0;
   String moneyAmountText;
   int minCount = 0;
   int tempAmount = 0;
-  int decimals = 3;
 
   MoneyTaskState(this.task, this.constraints) {
     finalMoneyAmount = currentAmountInt;
-    rnd = random.nextInt(1000);
-    print(rnd);
+    maxAmount = 10 * 100;
+    rnd = random.nextInt(maxAmount);
     this.maxAmount = 10;
-    // this.moneyAmount = random.nextInt(1000).toDouble();
-    // this.moneyAmount /= 100;
     this.moneyAmount = rnd;
-    print(rnd);
-    print(this.moneyAmount);
-    
-    while(this.moneyAmount != this.tempAmount){
-      if((this.moneyAmount - this.tempAmount) >= 200){
-        this.tempAmount += 200; ++minCount;
-      }else if((this.moneyAmount - this.tempAmount) >= 100){
-        this.tempAmount += 100; ++minCount;
-      }else if((this.moneyAmount - this.tempAmount) >= 50){
-        this.tempAmount += 50; ++minCount;
-      }else if((this.moneyAmount - this.tempAmount) >= 20){
-        this.tempAmount += 20; ++minCount;
-      }else if((this.moneyAmount - this.tempAmount) >= 10){
-        this.tempAmount += 10; ++minCount;
-      }else if((this.moneyAmount - this.tempAmount) >= 5){
-        this.tempAmount += 5; ++minCount;
-      }else if((this.moneyAmount - this.tempAmount) >= 2){
-        this.tempAmount += 2; ++minCount;
-      }else if((this.moneyAmount - this.tempAmount) >= 1){
-        this.tempAmount += 1; ++minCount;
-      }else {
+
+    while (this.moneyAmount != this.tempAmount) {
+      if ((this.moneyAmount - this.tempAmount) >= 200) {
+        this.tempAmount += 200;
+        ++minCount;
+      } else if ((this.moneyAmount - this.tempAmount) >= 100) {
+        this.tempAmount += 100;
+        ++minCount;
+      } else if ((this.moneyAmount - this.tempAmount) >= 50) {
+        this.tempAmount += 50;
+        ++minCount;
+      } else if ((this.moneyAmount - this.tempAmount) >= 20) {
+        this.tempAmount += 20;
+        ++minCount;
+      } else if ((this.moneyAmount - this.tempAmount) >= 10) {
+        this.tempAmount += 10;
+        ++minCount;
+      } else if ((this.moneyAmount - this.tempAmount) >= 5) {
+        this.tempAmount += 5;
+        ++minCount;
+      } else if ((this.moneyAmount - this.tempAmount) >= 2) {
+        this.tempAmount += 2;
+        ++minCount;
+      } else if ((this.moneyAmount - this.tempAmount) >= 1) {
+        this.tempAmount += 1;
+        ++minCount;
+      } else {
         break;
       }
     }
-    
-    moneyAmountText = this.moneyAmount.toString().substring(0,1) + "." + this.moneyAmount.toString().substring(1, this.moneyAmount.toString().length);
-    moneyAmountText.replaceAll(RegExp(r'.'), ',');
+
+    int length = moneyAmount.toString().length;
+    if (length == 2) {
+      moneyAmountText = "0";
+      moneyAmountText = moneyAmountText +
+          this
+              .moneyAmount
+              .toString()
+              .substring(0, this.moneyAmount.toString().length - length) +
+          "," +
+          this.moneyAmount.toString().substring(
+              this.moneyAmount.toString().length - length,
+              this.moneyAmount.toString().length);
+    } else if (length == 1) {
+      moneyAmountText = "0";
+      moneyAmountText = moneyAmountText +
+          this
+              .moneyAmount
+              .toString()
+              .substring(0, this.moneyAmount.toString().length - length) +
+          ",0" +
+          this.moneyAmount.toString().substring(
+              this.moneyAmount.toString().length - length,
+              this.moneyAmount.toString().length);
+    } else {
+      moneyAmountText = "";
+      moneyAmountText = moneyAmountText +
+          this
+              .moneyAmount
+              .toString()
+              .substring(0, this.moneyAmount.toString().length - 2) +
+          "," +
+          this.moneyAmount.toString().substring(
+              this.moneyAmount.toString().length - 2,
+              this.moneyAmount.toString().length);
+    }
   }
 
   @override
@@ -107,12 +140,10 @@ int currentAmountInt = 0;
     return Column(children: [
       // Row(
       //   children: [
-
       //Text("currentAmountInt: " + currentAmountInt.toString()),
       //Text("tempAmount: " + tempAmount.toString() + " "),
       //Text("Optimum: " + minCount.toString() + " "),
       //Text("i:" + i.toString()),
-
       //   ],int.parse(finalMoneyAmount.toStringAsFixed(2)
       // ),
       // Lama Speechbubble
@@ -122,7 +153,7 @@ int currentAmountInt = 0;
         // create space between each child
         child: Stack(
           children: [
-            //Text(sum.toString()),
+            Text(sum.toString()),
             Align(
               alignment: Alignment.centerLeft,
               child: Container(
@@ -188,8 +219,7 @@ int currentAmountInt = 0;
                     deletions.add(200);
                     amounts[0]++;
                     currentAmountInt = currentAmountInt + 200;
-                    currentAmountInt =
-                        int.parse(currentAmountInt.toString());
+                    currentAmountInt = int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -229,8 +259,7 @@ int currentAmountInt = 0;
                     (task.difficulty == 3)
                         ? currentAmountInt = currentAmountInt + 5
                         : currentAmountInt = currentAmountInt + 100;
-                    currentAmountInt =
-                        int.parse(currentAmountInt.toString());
+                    currentAmountInt = int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -261,8 +290,7 @@ int currentAmountInt = 0;
                     deletions.add(50);
                     amounts[2]++;
                     currentAmountInt = currentAmountInt + 50;
-                    currentAmountInt =
-                        int.parse(currentAmountInt.toString());
+                    currentAmountInt = int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -289,8 +317,7 @@ int currentAmountInt = 0;
                     deletions.add(20);
                     amounts[3]++;
                     currentAmountInt = currentAmountInt + 20;
-                    currentAmountInt =
-                        int.parse(currentAmountInt.toString());
+                    currentAmountInt = int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -336,8 +363,7 @@ int currentAmountInt = 0;
                     deletions.add(10);
                     amounts[4]++;
                     currentAmountInt = currentAmountInt + 10;
-                    currentAmountInt =
-                        int.parse(currentAmountInt.toString());
+                    currentAmountInt = int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -369,8 +395,7 @@ int currentAmountInt = 0;
                     deletions.add(5);
                     amounts[5]++;
                     currentAmountInt = currentAmountInt + 5;
-                    currentAmountInt =
-                        int.parse(currentAmountInt.toString());
+                    currentAmountInt = int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -402,8 +427,7 @@ int currentAmountInt = 0;
                     deletions.add(2);
                     amounts[6]++;
                     currentAmountInt = currentAmountInt + 2;
-                    currentAmountInt =
-                        int.parse(currentAmountInt.toString());
+                    currentAmountInt = int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -431,8 +455,7 @@ int currentAmountInt = 0;
                     deletions.add(1);
                     amounts[7]++;
                     currentAmountInt = currentAmountInt + 1;
-                    currentAmountInt =
-                        int.parse(currentAmountInt.toString());
+                    currentAmountInt = int.parse(currentAmountInt.toString());
                   });
                 },
               ),
@@ -473,8 +496,7 @@ int currentAmountInt = 0;
                     onPressed: () {
                       setState(() {
                         if (deletions.isNotEmpty) {
-                          currentAmountInt =
-                              currentAmountInt - deletions.last;
+                          currentAmountInt = currentAmountInt - deletions.last;
                           int deletedElement = deletions.removeLast();
                           updateAmount(deletedElement);
                         } else {
@@ -535,25 +557,27 @@ int currentAmountInt = 0;
                     print(
                         "finalMoneyAmount.toStringAsFixed(2): $finalMoneyAmount.toStringAsFixed(2)");
                     print("moneyAmount: $moneyAmount");
-                  if (task.optimum == true){
-                    if ((this.finalMoneyAmount.toString()) ==
-                        (this.moneyAmount.toString()) && sum == minCount) {
-                      answer = true;
-                      print("correct");
+                    if (task.optimum == true) {
+                      if ((this.finalMoneyAmount.toString()) ==
+                              (this.moneyAmount.toString()) &&
+                          sum == minCount) {
+                        answer = true;
+                        print("correct");
+                      } else {
+                        answer = false;
+                        print("false");
+                      }
                     } else {
-                      answer = false;
-                      print("false");
+                      if ((this.finalMoneyAmount.toString()) ==
+                          (this.moneyAmount.toString())) {
+                        answer = true;
+                        print("correct");
+                      } else {
+                        answer = false;
+                        print("false");
+                      }
                     }
-                  }else {if ((this.finalMoneyAmount.toString()) ==
-                        (this.moneyAmount.toString())) {
-                      answer = true;
-                      print("correct");
-                    } else {
-                      answer = false;
-                      print("false");
-                    }
-                    }
-                    
+
                     // (finalMoneyAmount.toStringAsFixed(2) == moneyAmount) ? answer = true : answer = false;
                     BlocProvider.of<TaskBloc>(context)
                         .add(AnswerTaskEvent.initMoneyTask(answer));
