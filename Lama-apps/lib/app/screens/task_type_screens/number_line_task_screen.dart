@@ -8,20 +8,20 @@ import 'package:lama_app/app/event/task_events.dart';
 import '../../../util/LamaColors.dart';
 import '../../../util/LamaTextTheme.dart';
 import '../../task-system/task.dart';
-
+ 
 // Author J.Decher
-
+ 
 class NumberLineTaskScreen extends StatefulWidget {
   final TaskNumberLine task;
   final BoxConstraints constraints;
   NumberLineTaskScreen(this.task, this.constraints);
-
+ 
   @override
   State<StatefulWidget> createState() {
     return NumberLineState(task, constraints);
   }
 }
-
+ 
 class NumberLineState extends State<NumberLineTaskScreen> {
   final TextEditingController controller = TextEditingController();
   final TaskNumberLine task;
@@ -37,12 +37,11 @@ class NumberLineState extends State<NumberLineTaskScreen> {
   bool firstTry = true;
   bool tappedCorrectly = false;
   bool tappedIncorrectly = false;
-  TapDownDetails details;
   //double rating = 40; for Slider
   NumberLineState(this.task, this.constraints) {
     this.rngStart = task.range[0];
     this.rngEnd = task.range[1];
-
+ 
     if (task.randomrange) {
       int temp = rngEnd - rngStart;
       this.rngStart = random.nextInt(temp ~/ 2) + task.range[0];
@@ -53,9 +52,9 @@ class NumberLineState extends State<NumberLineTaskScreen> {
       rngStart = ((rngStart.toDouble() / task.steps).round() * task.steps);
       rngEnd = ((rngEnd.toDouble() / task.steps).round() * task.steps);
     }
-
+ 
     this.gesuchteZahl = random.nextInt(rngEnd - rngStart) + rngStart;
-
+ 
     if (task.steps > 0) {
       gesuchteZahl =
           ((gesuchteZahl.toDouble() / task.steps).round() * task.steps);
@@ -74,7 +73,7 @@ class NumberLineState extends State<NumberLineTaskScreen> {
     this.dgesuchteZahl = gesuchteZahl.toDouble();
     this.firstTry = true;
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     bool paintRed = !task.ontap;
@@ -92,12 +91,12 @@ class NumberLineState extends State<NumberLineTaskScreen> {
         SizedBox(height: 20),
         lamaHead(context, task, constraints, task.ontap),
         SizedBox(height: 50),
-
+ 
         // Shows correct answer on screen
         // buildText(context, dgesuchteZahl.toInt(), 100),
-
+ 
         // Start and end of number line as text
-        numbers(context, rngStart, rngEnd, endPixel),
+        numbers(context, rngStart, rngEnd),
         Align(
           alignment: Alignment.topCenter,
         ),
@@ -116,7 +115,8 @@ class NumberLineState extends State<NumberLineTaskScreen> {
         SizedBox(height: 50),
         keyboard(context, controller, dgesuchteZahl.toInt()),
         SizedBox(height: 50),
-        fertigButton(context, constraints, controller, dgesuchteZahl),
+        fertigButton(context, constraints, controller, dgesuchteZahl, diff),
+        Text(controller.text),
       ]);
       // If user has to tap the correct area
     } else {
@@ -131,7 +131,7 @@ class NumberLineState extends State<NumberLineTaskScreen> {
         Container(
           height: screenheight / 25,
           width: screenwidth,
-          child: numbers(context, rngStart, rngEnd, endPixel),
+          child: numbers(context, rngStart, rngEnd),
         ),
         // Stack for correct/incorrect areas, icons and number line
         Stack(
@@ -150,7 +150,7 @@ class NumberLineState extends State<NumberLineTaskScreen> {
                 ),
               ),
             ),
-
+ 
             //Icon correct
             Positioned(
               top: 10,
@@ -259,7 +259,7 @@ class NumberLineState extends State<NumberLineTaskScreen> {
     }
   }
 }
-
+ 
 // original source for LinePainter: https://github.com/JohannesMilke/custom_paint_ii_example/blob/master/lib/page/line_paint_page.dart
 class LinePainter extends CustomPainter {
   double dgesuchterPixel;
@@ -304,9 +304,9 @@ class LinePainter extends CustomPainter {
       Offset(size.width * 1, size.height * 0.5),
       paint,
     );*/
-
+ 
     //Unterteilung des Zahlenstrahls
-
+ 
     for (int i = diff.toString().length - 1; i > 1; i--) {
       if (diff > 100 && diff.toString()[i] == "0" && rngStart > 0) {
         diff = diff ~/ 10;
@@ -342,7 +342,7 @@ class LinePainter extends CustomPainter {
             paint,
           );
         }
-
+ 
         canvas.drawLine(
           Offset(endPixel * i / (diff / 5), size.height * 0.2),
           Offset(endPixel * i / (diff / 5), size.height * 0.8),
@@ -374,11 +374,11 @@ class LinePainter extends CustomPainter {
       );
     }
   }
-
+ 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
-
+ 
 Widget lamaHead(
     BuildContext context, Task task, BoxConstraints constraints, bool onTap) {
   return Container(
@@ -415,23 +415,23 @@ Widget lamaHead(
     ]),
   );
 }
-
-Widget numbers(BuildContext context, int rngStart, int rngEnd, int endPixel) {
+ 
+Widget numbers(BuildContext context, int rngStart, int rngEnd) {
   return Container(
     margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width / 40, 0,
         MediaQuery.of(context).size.width / 100, 0),
     height: 20,
     child: Row(
       children: [
-        buildText(context, rngStart, 20),
+        buildText(context, rngStart),
         Expanded(child: Container()),
-        buildText(context, rngEnd, endPixel.toDouble()),
+        buildText(context, rngEnd),
       ],
     ),
   );
 }
-
-Widget buildText(BuildContext context, int rng, double pixel) {
+ 
+Widget buildText(BuildContext context, int rng) {
   return Text(
     rng.toString(),
     style: TextStyle(
@@ -440,7 +440,7 @@ Widget buildText(BuildContext context, int rng, double pixel) {
     ),
   );
 }
-
+ 
 Widget keyboard(
     BuildContext context, TextEditingController controller, int gesuchteZahl) {
   return Container(
@@ -461,9 +461,13 @@ Widget keyboard(
     ),
   );
 }
-
+ 
 Widget fertigButton(BuildContext context, BoxConstraints constraints,
-    TextEditingController controller, double dgesuchteZahl) {
+    TextEditingController controller, double dgesuchteZahl, int diff) {
+  bool answer;
+  if (diff < 0){
+    diff *= -1;
+  }
   return Container(
     height: (constraints.maxHeight / 100) * 25,
     child: Center(
@@ -497,24 +501,33 @@ Widget fertigButton(BuildContext context, BoxConstraints constraints,
               noInput = false;
             }
             if (noInput) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                duration: Duration(seconds: 2),
-                content: Container(
-                    height: (constraints.maxHeight / 100) * 6,
-                    alignment: Alignment.bottomCenter,
-                    child: Center(
-                        child: FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Text(
-                        "Gib eine Zahl ein!",
-                        style: LamaTextTheme.getStyle(),
-                        textAlign: TextAlign.center,
-                      ),
-                    ))),
-                backgroundColor: LamaColors.mainPink,
-              ));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  duration: Duration(seconds: 2),
+                  content: Container(
+                      height: (constraints.maxHeight / 100) * 6,
+                      alignment: Alignment.bottomCenter,
+                      child: Center(
+                          child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          "Gib eine Zahl ein!",
+                          style: LamaTextTheme.getStyle(),
+                          textAlign: TextAlign.center,
+                        ),
+                      ))),
+                  backgroundColor: LamaColors.mainPink,
+                ),
+              );
             } else {
-              bool answer = double.parse(controller.text) == dgesuchteZahl;
+              if (double.parse(controller.text) == dgesuchteZahl ||
+                  double.parse(controller.text) == dgesuchteZahl - 1 && diff > 50||
+                  double.parse(controller.text) == dgesuchteZahl + 1 && diff > 50
+                  ) {
+                answer = true;
+              } else {
+                answer = false;
+              }
               BlocProvider.of<TaskBloc>(context)
                   .add(AnswerTaskEvent.initNumberLine(answer));
             }
@@ -522,7 +535,7 @@ Widget fertigButton(BuildContext context, BoxConstraints constraints,
     ),
   );
 }
-
+ 
 Widget fertigButtonTap(
     BuildContext context,
     BoxConstraints constraints,
