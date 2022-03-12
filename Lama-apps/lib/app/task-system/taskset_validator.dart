@@ -75,10 +75,13 @@ class TasksetValidator {
             return "Aufgabentyp: 4Cards";
 
           case "Zerlegung":
-            if (json.containsKey("right_answer") &&
-                json["right_answer"] is int &&
-                json.containsKey("reverse") &&
-                json["reverse"] is bool) return null;
+            if (json.containsKey("reverse") &&
+                json["reverse"] is bool &&
+                json.containsKey('zeros') &&
+                json['zeros'] is bool &&
+                json.containsKey('boolThousands')&&
+                json['boolThousands'] is bool)
+                return null;
             return "Aufgabentyp: Zerlegung";
 
           ///ClozeTest
