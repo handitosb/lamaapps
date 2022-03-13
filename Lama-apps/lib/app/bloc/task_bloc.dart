@@ -47,9 +47,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
         }
       } else if (t is TaskZerlegung) {
         //print("Zelegung validation"); // To remove after
-        if (DeepCollectionEquality().equals(event.answerParts, t.answerParts) ||
-            DeepCollectionEquality()
-                .equals([...event.answerParts].reversed, t.answerParts)) {
+        if (event.providedAnswerBool) {
           rightAnswerCallback(t);
           yield TaskAnswerResultState(true);
         } else {

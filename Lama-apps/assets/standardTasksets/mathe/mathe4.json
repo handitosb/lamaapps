@@ -18,8 +18,8 @@
             "lama_text": " zerlegt die Zahlen!",
             "left_to_solve": 3,
             "reverse": false,
-            "right_answer": 854,
-            "answer_parts": [800 ,50 ,4] 
+            "zeros": false,
+            "boolThousands": false 
         },
         {
             "task_type": "Clock",
