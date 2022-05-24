@@ -1,9 +1,9 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=F:\flutter"
-export "FLUTTER_APPLICATION_PATH=G:\Git\Git\lamaapps\Lama-apps"
+export "FLUTTER_ROOT=/Users/dkdhbismo/Documents/flutter"
+export "FLUTTER_APPLICATION_PATH=/Volumes/Development/lama/lamaapps/Lama-apps"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=lib\main.dart"
+export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.6.1"
 export "FLUTTER_BUILD_NUMBER=1.6.1"

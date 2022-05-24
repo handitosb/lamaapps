@@ -31,6 +31,7 @@ class UserRepository {
     return authenticatedUser.grade;
   }
 
+
   ///Returns the avatar of the user thats currently logged in.
   String getAvatar() {
     return authenticatedUser.avatar;

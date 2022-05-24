@@ -40,6 +40,7 @@ class User {
       this.avatar,
       this.highscorePermission});
 
+
   ///Map the variables
   ///
   ///{@return} Map<String, dynamic>

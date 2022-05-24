@@ -76,9 +76,6 @@ class TaskScreenState extends State<TaskScreen> {
               lg = LinearGradient(
                   colors: [LamaColors.purpleAccent, LamaColors.purplePrimary]);
               break;
-            case "Kleiner":
-              lg = LinearGradient(
-                  colors: [LamaColors.mainPink, LamaColors.white]);
           }
           return Scaffold(
             resizeToAvoidBottomInset: false,

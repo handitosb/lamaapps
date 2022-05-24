@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lama_app/app/repository/user_repository.dart';
+import 'package:lama_app/app/screens/manage_taskset_screen.dart';
+import 'package:lama_app/app/task-system/task.dart';
 //Lama default
 import 'package:lama_app/util/LamaColors.dart';
 import 'package:lama_app/util/LamaTextTheme.dart';
@@ -11,6 +14,10 @@ import 'package:lama_app/app/bloc/taskset_options_bloc.dart';
 //Events
 import 'package:lama_app/app/event/taskset_options_event.dart';
 import 'package:lama_app/app/model/taskUrl_model.dart';
+
+import '../bloc/manage_taskset_bloc.dart';
+import '../repository/taskset_repository.dart';
+
 //States
 
 ///This file creates the Taskset Option Screen
@@ -31,6 +38,9 @@ import 'package:lama_app/app/model/taskUrl_model.dart';
 /// Author: L.Kammerer
 /// latest Changes: 15.07.2021
 class OptionTaskScreen extends StatefulWidget {
+  final ManageTasksetScreen task;
+
+  const OptionTaskScreen({Key key, this.task}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return OptionTaskScreennState();
@@ -43,6 +53,7 @@ class OptionTaskScreennState extends State<OptionTaskScreen> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   //temporary url to prevent losing the url on error states
   String urlInitValue;
+  UserRepository userRepository;
 
   @override
   void initState() {
@@ -109,6 +120,8 @@ class OptionTaskScreennState extends State<OptionTaskScreen> {
                     _inputFields(context, urlInitValue),
                     _headline('Taskset URLs'),
                     _tasksetUrlList(state.urls),
+                    _headline('Taskset Verwaltung'),
+                    _tasksetUrlOption(state.urls),
                     _headline('Kürzlich gelöscht'),
                     _tasksetUrlDeletedList(state.deletedUrls),
                   ],
@@ -433,6 +446,52 @@ class OptionTaskScreennState extends State<OptionTaskScreen> {
           bottom: Radius.circular(30),
         ),
       ),
+    );
+  }
+  Widget _tasksetUrlOption(List<TaskUrl> urls) {
+    List<Widget> children = [];
+    TasksetRepository tasksetRepository =
+        RepositoryProvider.of<TasksetRepository>(context);
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: urls.length,
+      itemBuilder: (context, index) {
+        return Row(
+          children: [
+            Text(
+              urls[index].url.length > 30
+                  ? urls[index].url.substring(7, 32) + '...'
+                  : urls[index].url,
+              style: LamaTextTheme.getStyle(
+                  color: Colors.grey, fontSize: 18, monospace: true),
+            ),
+            Spacer(),
+            //button to insert the url in the Database again
+            IconButton(
+              icon: Icon(
+                Icons.settings,
+                color: LamaColors.bluePrimary,
+                size: 25,
+              ),
+              onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BlocProvider(
+                  create: (BuildContext context) =>
+                  ManageTasksetBloc(context.read<TasksetRepository>()),
+                    child: ManageTasksetScreen(
+                      tasksetRepository
+                    ),
+                  ),
+                ),
+              ).then((value) => (setState(() {})));
+            },
+            )
+          ],
+        );
+      },
     );
   }
 }
