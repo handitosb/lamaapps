@@ -7,7 +7,6 @@ import 'package:lama_app/app/bloc/task_bloc.dart';
 import 'package:lama_app/app/bloc/task_bloc2.dart';
 import 'package:lama_app/app/event/manage_taskset_event.dart';
 import 'package:lama_app/app/repository/taskset_repository.dart';
-import 'package:lama_app/app/screens/task_screen.dart';
 import 'package:lama_app/app/screens/taskset_edit_screen.dart';
 import 'package:lama_app/app/state/manage_taskset_state.dart';
 import 'package:lama_app/app/task-system/task.dart';
@@ -230,3 +229,106 @@ class ManageTasksetScreenState extends State<ManageTasksetScreen> {
     return tasks;
   }
 }
+
+abstract class AdminUtils {
+  ///START of Area for UserPreferences
+  ///
+  ///enableDefaultTasksetsPref is used to set an bool in the
+  ///UserPreferences to deaktivate all default Tasksets made available by this App
+  static final String enableDefaultTasksetsPref = 'enableDefaultTaskset';
+
+  ///highscoreUploadUrl is used to set a string in the
+  ///UserPreferences to upload game highscores via this url
+  static final String highscoreUploadUrlPref = 'highscoreUploadUrl';
+
+  ///
+  ///END of Area for UserPreferences
+
+  ///reloads all Tasksets (defaults and custom sets)
+  ///reading the [TasksetRepository] from context
+  ///and execute the [reloadTasksetLoader] function
+  ///
+  ///{@Important} the context of the app
+  ///provides the [TasksetRepository] by default.
+  ///However on use make sure the context provides the [TasksetRepository]
+  ///This Method doesn't check the context so no error handling is implemented
+  ///
+  ///{@param} [BuildContext] as context
+  ///
+  /// * see also
+  ///    [RepositoryProvider]
+  ///    [TasksetRepository]
+  static void reloadTasksets(BuildContext context) {
+    RepositoryProvider.of<TasksetRepository>(context).reloadTasksetLoader();
+  }
+
+  ///porvides [AppBar] with default design for Screens used by the Admin
+  ///
+  ///{@params}
+  ///[Size] as screenSize used to calculate the size of [AppBar]
+  ///[AppBar] [Color] as colors
+  ///[AppBar] titel as String title
+  ///
+  ///{@return} [AppBar] with generel AdminMenu specific design
+  static Widget appbar(Size screenSize, Color color, String titel) {
+    return AppBar(
+      title: Text(
+        titel,
+        style: LamaTextTheme.getStyle(fontSize: 18),
+      ),
+      toolbarHeight: screenSize.width / 5,
+      backgroundColor: color,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(30),
+        ),
+      ),
+    );
+  }
+
+  ///porvides [Row] with default designed abort and save [Ink] Button
+  ///for all Screens used by the Admin where this buttons are needed.
+  ///
+  ///{@params}
+  ///[VoidCallback] as functionLeft. onPressed for the 'Bestätigen' (save) Button.
+  ///[VoidCallback] as functionRight. onPressed for the 'Abbrechen' (abort) Button.
+  ///
+  ///{@return} [Row] with two [Ink] Buttons
+  //TODO Rename to abort not Aboard
+  static Widget saveAboardButtons(
+      VoidCallback functionLeft, VoidCallback functionRight) {
+    return Row(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(right: 10),
+          child: Ink(
+            decoration: ShapeDecoration(
+              color: LamaColors.greenPrimary,
+              shape: CircleBorder(),
+            ),
+            padding: EdgeInsets.all(7.0),
+            child: IconButton(
+                icon: Icon(Icons.save, size: 28),
+                color: Colors.white,
+                tooltip: 'Bestätigen',
+                onPressed: functionLeft),
+          ),
+        ),
+        Ink(
+          decoration: ShapeDecoration(
+            color: LamaColors.redPrimary,
+            shape: CircleBorder(),
+          ),
+          padding: EdgeInsets.all(2.0),
+          child: IconButton(
+              icon: Icon(Icons.close_rounded),
+              color: Colors.white,
+              tooltip: 'Abbrechen',
+              onPressed: functionRight),
+        ),
+      ],
+      mainAxisAlignment: MainAxisAlignment.end,
+    );
+  }
+}
+
